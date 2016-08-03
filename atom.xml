@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>就爱萌萌哒</title>
+  <subtitle>Talk is cheap, Show me the code.</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://lvu.me/"/>
+  <updated>2016-08-03T01:05:47.000Z</updated>
+  <id>http://lvu.me/</id>
+  
+  <author>
+    <name>gpia</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>对linux文件权限的理解</title>
+    <link href="http://lvu.me/2016/08/03/%E5%AF%B9linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%9A%84%E7%90%86%E8%A7%A3/"/>
+    <id>http://lvu.me/2016/08/03/对linux文件权限的理解/</id>
+    <published>2016-08-03T00:06:02.000Z</published>
+    <updated>2016-08-03T01:05:47.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>*nix系统中，文件的各种权限比较重要，以下内容，是通过学习《鸟哥的linxu私房菜》之后总结的内容，方便自己理解和记忆。这篇文章最早发布于<a href="http://www.cnblogs.com/ilvu/p/4002992.html" target="_blank" rel="external">我的博客园</a>。</p>
+<p>档案 和 目录 都有权限：r、w 、x，并且对于 拥有者（属主），同组用户，其他用户 都有对应的权限限制。</p>
+<ul>
+<li>对于档案（即文件）：r代表读，可读取文件的内容；w代表写，可修改文件的内容；x代表执行，可以执行文件</li>
+<li>对于目录（记录文件清单）：r代表可以列出其中的档案相关信息；w代表目录下文件和目录的删除、重命名、新建；x代表可以以该目录作为工作目录</li>
+</ul>
+<p>总结：</p>
+<ul>
+<li>文件的访问及使用限制由文件本身的权限决定，但是文件名称的修改、文件本身的删除是由文件所在目录的w权限决定的。</li>
+<li>文件的拥有着或者root可以修改档案或者目录的权限。</li>
+</ul>
+<p>显然的，对于所有以文件的方式存在的命令，它们也有权限，所以，比如cd、ls等系统提供的命令也是有权限的，可以通过删除其x权限禁止用户使用该命令。<br>用户使用系统：即用户通过一个程序去操作文件或档案，要顺利进行这一动作，得满足两个条件：</p>
+<ul>
+<li>对该程序文件的执行权限，如对 cd 、ls 等的x权限</li>
+<li>对要操作的目标文件的访问权限，如r，w</li>
+</ul>
+<p>举例：用户 dvid 进行操作：vim test.cpp，首先 dvid 得具有 vim 程式的执行权限：x，其次 dvid 得具有 test.cpp 的读写权限：rw</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;*nix系统中，文件的各种权限比较重要，以下内容，是通过学习《鸟哥的linxu私房菜》之后总结的内容，方便自己理解和记忆。这篇文章最早发布于&lt;a href=&quot;http://www.cnblogs.com/ilvu/p/4002992.html&quot; target=&quot;_blank
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://lvu.me/categories/Linux/"/>
+    
+      <category term="权限" scheme="http://lvu.me/categories/Linux/%E6%9D%83%E9%99%90/"/>
+    
+    
+      <category term="权限" scheme="http://lvu.me/tags/%E6%9D%83%E9%99%90/"/>
+    
+      <category term="命令" scheme="http://lvu.me/tags/%E5%91%BD%E4%BB%A4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React Native环境搭建</title>
+    <link href="http://lvu.me/2016/07/14/React-Native%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <id>http://lvu.me/2016/07/14/React-Native环境搭建/</id>
+    <published>2016-07-14T15:28:33.000Z</published>
+    <updated>2016-07-31T04:48:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近尝试了下React Native，<a href="https://facebook.github.io/react-native/docs/getting-started.html#content" target="_blank" rel="external">官网的安装教程</a>，已经写的非常详细了，但是我在环境配置的过程中，还是发现了一些大坑。</p>
+<p><strong><em>重点是watchman的版本得是4.0以上！</em></strong></p>
+<p>如果你按找官方的教程，搭建好了Android或者IOS的开发环境，安装了<a href="https://facebook.github.io/watchman" target="_blank" rel="external">watchman</a>，在使用react native跑示例程序的时候，报错，出现一些奇怪的报错，那么很大可能就是这个原因！尤其是mac，在可能已经安装了watchman的情况下，需要卸载老版本，重新安装最新的版本。</p>
+<a id="more"></a> 
+<p>在mac上，可以使用Homebrew安装最新版watchman的命令是：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">watchman -v  <span class="comment">#查看watchman的版本</span></div><div class="line">brew uninstall watchman  <span class="comment">#卸载</span></div><div class="line">brew unlink watchman  </div><div class="line">brew install --HEAD watchman  <span class="comment">#通过github直接安装最新版本的watchman</span></div></pre></td></tr></table></figure></p>
+<p>如果是开发React Native的Android程序，那么需要先搭建Android开发环境，如果是开发IOS的程序，需要先搭建IOS的开发环境。<br>按照教程上的，如果是开发Android应用，那么需要配置Android开发环境，当然最方便的就是，直接下载Android官方开发工具<a href="https://developer.android.com/studio/install.html" target="_blank" rel="external">Android Studio</a>，如果不能翻墙上不去，就去这里找一找<a href="http://www.androiddevtools.cn/" target="_blank" rel="external">http://www.androiddevtools.cn/</a>。然后打开里面的Android SDK Manager下载相应的sdk、模拟器镜像等等，并将Android SDK的路径加入用户环境变量，用于在命令行被调用。注意MAC和windows平台上环境变量的设置。</p>
+<p>对于Android方式，借助Android Studio可以方便地创建安卓模拟器、启动模拟器，然后，在其上跑React Native的应用。<br>对于IOS，好像只能是在mac上开发，有了xcode，安装ios模拟器之后，就和安卓的方式一样了。</p>
+<p>下面列出一些Android开发常用的命令（来自android sdk，请确保android sdk路径已经被加入path环境变量），比如通过命令行创建模拟器或者启动模拟器，虚拟机即模拟器。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">android list avd  <span class="comment">#查看所有的虚拟机</span></div><div class="line">android create avd  <span class="comment">#创建虚拟机</span></div><div class="line">emulator -avd avd-name  <span class="comment">#启动虚拟机，avd-name 不要带后缀.avd</span></div><div class="line">adb devices  <span class="comment">#查看已经启动的安卓设备（包括模拟器和通过usb连接的手机）</span></div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近尝试了下React Native，&lt;a href=&quot;https://facebook.github.io/react-native/docs/getting-started.html#content&quot;&gt;官网的安装教程&lt;/a&gt;，已经写的非常详细了，但是我在环境配置的过程中，还是发现了一些大坑。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;重点是watchman的版本得是4.0以上！&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果你按找官方的教程，搭建好了Android或者IOS的开发环境，安装了&lt;a href=&quot;https://facebook.github.io/watchman&quot;&gt;watchman&lt;/a&gt;，在使用react native跑示例程序的时候，报错，出现一些奇怪的报错，那么很大可能就是这个原因！尤其是mac，在可能已经安装了watchman的情况下，需要卸载老版本，重新安装最新的版本。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://lvu.me/categories/JavaScript/"/>
+    
+      <category term="React" scheme="http://lvu.me/categories/JavaScript/React/"/>
+    
+    
+      <category term="javascript" scheme="http://lvu.me/tags/javascript/"/>
+    
+      <category term="react" scheme="http://lvu.me/tags/react/"/>
+    
+      <category term="react native" scheme="http://lvu.me/tags/react-native/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>阳光正好</title>
+    <link href="http://lvu.me/2016/06/26/%E9%98%B3%E5%85%89%E6%AD%A3%E5%A5%BD/"/>
+    <id>http://lvu.me/2016/06/26/阳光正好/</id>
+    <published>2016-06-26T06:34:13.000Z</published>
+    <updated>2016-07-31T04:48:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>你所知道的一切，最终都会成为你的束缚。你的知识，决定了你会做出何种行为，当你的知识不够全面，不够客观，那么你容易做出自己觉得对的，但实际上不怎么正确的决定。<br>我们读书，或者旅行，或者和别人交流，或者反思，都可以让我们更好地认识世界，认识人生，认识自己，让自己具备全面的、客观的知识，从而做出正确的决定。<br>希望最后的我们，有信仰，有敬畏，有坚持，有原则，相信美好，选择善良，认真地生活。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;你所知道的一切，最终都会成为你的束缚。你的知识，决定了你会做出何种行为，当你的知识不够全面，不够客观，那么你容易做出自己觉得对的，但实际上不怎么正确的决定。&lt;br&gt;我们读书，或者旅行，或者和别人交流，或者反思，都可以让我们更好地认识世界，认识人生，认识自己，让自己具备全面的
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://lvu.me/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="随笔" scheme="http://lvu.me/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="随想" scheme="http://lvu.me/tags/%E9%9A%8F%E6%83%B3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AnglarJS Tips（持续更新）</title>
+    <link href="http://lvu.me/2016/05/28/AnglarJS-Tips/"/>
+    <id>http://lvu.me/2016/05/28/AnglarJS-Tips/</id>
+    <published>2016-05-28T09:16:19.000Z</published>
+    <updated>2016-07-31T04:48:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>用AngularJS的人越来越多了，这里有一些重要的问题，可以作为对AngularJS的考察点。<br>以下内容，针对1.x版本。</p>
+<p>1.AngularJS实现双向绑定的原理是什么？<br>2.$scope上$apply的作用是什么，什么时候需要你手动调用？<br>3.使用AngularJS的好处是什么？</p>
+<p>以上问题，实际涉及到AngularJS的核心原理，能否清楚的回答，直接反映出你对AngularJS了解程度的深浅。</p>
+<a id="more"></a> 
+<p>AngularJS作为一个MVC框架，一个很重要的功能就是数据绑定，即模型（model，具体体现为$scope对象）和视图（view，具体体现为指令模板）之间的数据同步，双向绑定呢，既有从模型到视图，也有视图到模型。我们使用ng-model这个指令来说明双向绑定的核心原理。<br>比如模板 &lt;input ng-model=”model” /&gt;， 数据从视图到模型这个方向，ng-model指令通过在input这个元素上添加事件监听（change），当input的 值发生变化的时候，新值被写入$scope.model属性；对于数据从模型到视图这个方向，ng-model指令在$scope上进行了数据监听($watch)，当监测到$scope.model被修改（比如ajax从后台获取数据），那么这个值就会被写入input的value。这就是双向绑定的整个过程。</p>
+<p>经过上面的讨论，对于问题1，它的答案是：<strong><em>数据监听，视图到模型方向通过给模板中的DOM元素添加事件监听（典型的是change）完成，模型到视图方向通过给模型$scope添加属性监听（$watch）实现，如此就可以实现数据在视图和模型之间的双向绑定了。</em></strong></p>
+<p>上面说到，模型到视图是通过在$scope上添加属性监听（$watch）实现的，那这里有个问题，这个事件监听是如何来实现监测对的呢，它是如何感知到$scope上属性的变化的呢，具体如何实现？视图到模型好说，最终可以通过DOM事件实现，那模型上呢？模型说到底就是一个JavaScript对象，它如何监测自己的变化？<br>在AngularJS的实现中，采用了一种称之为<strong><em>“脏数据检测”($digest，也有翻译“脏值检查”)</em></strong>的机制，即通过$scope的$watch方法，添加好多的检测表达式，以及变化时候的回调，然后在触发“脏数据检测”的时候，逐一执行这些检测表达式，比较这些表达式的值和上一次执行时候的值是否相同来确定$scope是否发生了变化，如果变化了，执行相应的回调方法，这样就能够对$scope的变化做出反应。那好，这里重点是它的实现方式，很显然，$scope还需要被触发去执行这个“脏数据检测”的过程，那么这个检测过程是什么时候被执行的呢？这就是AngularJS的核心原理了。<br>现在来说下“脏数据检测”的触发过程。“脏数据检测”是发生在每一个具体的$scope对象上的，对于某个$scope而言，进行“脏数据检测”实际上就是执行该$scope上的$digest方法。$scope上还有一个方法就是$apply,$apply是接受一个表达式，并在$scope上执行，最后会调用$digest，即触发“脏数据检测”。大多数时候，AngularJS会自行触发这个“脏数据检测”的过程，并不需要我们手动去调用$digest或者$apply，这也就是为什么我们在使用ng-model或者$http的时候，视图和模型已经自动关联的原因。<br>以下场景AngularJS会自动的调用$apply:</p>
+<ul>
+<li>angular启动的时候</li>
+<li>angular事件绑定，如ng-click，ng-dblclick，ng-mousedown，ng-mouseup，ng-mouseover，ng-keydown等等</li>
+<li>input，textarea, select等表单元素（实际上input，textarea，select是angular内部定义的指令，angluar中定义的指令可以有多种使用方式，这种就是“E”）</li>
+<li>angular的部分内置服务，如 $http，$timeout等</li>
+</ul>
+<p>经过上面的讨论，我们来回答问题2。<strong><em>$apply是$scope上的一个方法，作用是在$scope上执行一个表达式，然后调用$digest，触发“脏数据检测”过程，实现模型和视图间的同步以及更新。除了上面所述的几种AngularJS会自动触发“脏数据检测”的场景，如果你在混用jQuery绑定DOM事件，调用外部的回调方法等等，这时候就需要手动调用$apply了。</em></strong></p>
+<p>对于问题3，主要归纳下，就是：（1）AngularJS是一个MVC模式的框架，你可以分离控制逻辑、数据和渲染过程，各个部分职责明确，更加灵活；（2）AngularJS提供了指令这种强大的方式，让你可以扩展HTML，封装功能强大的独立组件；(3)AngularJS有模块的概念，可以将不同的部分放在不同的模块里面，结构清晰；（4）AngularJS提供了依赖注入的功能，让你可以方便地加载需要的服务或者模块等，并且这让测试变得很容易。</p>
+<p>上述涉及到AngularJS核心的东西，大家可以查看源码进行对照（针对1.x版本）。这里附上一个stackoverflow上的链接：<a href="http://stackoverflow.com/questions/12463902/how-does-the-binding-and-digesting-work-in-angularjs" target="_blank" rel="external">how does the binding and digesting work in AngularJS?</a>，以示对照。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;用AngularJS的人越来越多了，这里有一些重要的问题，可以作为对AngularJS的考察点。&lt;br&gt;以下内容，针对1.x版本。&lt;/p&gt;
+&lt;p&gt;1.AngularJS实现双向绑定的原理是什么？&lt;br&gt;2.$scope上$apply的作用是什么，什么时候需要你手动调用？&lt;br&gt;3.使用AngularJS的好处是什么？&lt;/p&gt;
+&lt;p&gt;以上问题，实际涉及到AngularJS的核心原理，能否清楚的回答，直接反映出你对AngularJS了解程度的深浅。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://lvu.me/categories/JavaScript/"/>
+    
+      <category term="AngularJS" scheme="http://lvu.me/categories/JavaScript/AngularJS/"/>
+    
+    
+      <category term="AngularJS" scheme="http://lvu.me/tags/AngularJS/"/>
+    
+      <category term="javascript" scheme="http://lvu.me/tags/javascript/"/>
+    
+      <category term="双向绑定" scheme="http://lvu.me/tags/%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/"/>
+    
+      <category term="脏数据检测" scheme="http://lvu.me/tags/%E8%84%8F%E6%95%B0%E6%8D%AE%E6%A3%80%E6%B5%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>随想</title>
+    <link href="http://lvu.me/2016/05/23/%E9%9A%8F%E6%83%B32016-05-23/"/>
+    <id>http://lvu.me/2016/05/23/随想2016-05-23/</id>
+    <published>2016-05-23T14:19:10.000Z</published>
+    <updated>2016-07-31T04:48:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>应该写一些东西了，总是会有几天，感悟颇多。</p>
+<p>做事情应该面向结果，而不是面向过程。很多事情不是你做了就到此为止了，而是要看结果如何的。就比如一段代码，你觉得写完了ok了，但是你有没有在代码中留下一些坑呢，结果是否达到预期呢？这是对结果负责。更进一步，如果你做完之后，能够反思整个过程，是否哪里可以改进呢？这是对自己的提高。</p>
+<p>反思是一种非常好的改进自我的方式，小到具体技巧的优化，大到整个人生思想水平的提高。这绝对可以让你的成长速度加倍，你可以用一年的时间收获他们两年的经验，你可以对同样的错误举一反三，绝不再犯。</p>
+<p>思维方式真的能决定一个人的层次，然后决定你的生活。有些东西只要你意识到了，那么它就会对你的人生产生巨大的作用。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;应该写一些东西了，总是会有几天，感悟颇多。&lt;/p&gt;
+&lt;p&gt;做事情应该面向结果，而不是面向过程。很多事情不是你做了就到此为止了，而是要看结果如何的。就比如一段代码，你觉得写完了ok了，但是你有没有在代码中留下一些坑呢，结果是否达到预期呢？这是对结果负责。更进一步，如果你做完之
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://lvu.me/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="随笔" scheme="http://lvu.me/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="随想" scheme="http://lvu.me/tags/%E9%9A%8F%E6%83%B3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript原型</title>
+    <link href="http://lvu.me/2015/12/15/JavaScript%E5%8E%9F%E5%9E%8B/"/>
+    <id>http://lvu.me/2015/12/15/JavaScript原型/</id>
+    <published>2015-12-15T14:39:17.000Z</published>
+    <updated>2016-07-31T04:48:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>JavaScript中对象的继承可以通过原型来实现，下面主要来说一下原型相关的问题。<br>以下是一些结论，详见文章内的验证：</p>
+<ul>
+<li>函数都有prototype属性，由函数构造的对象来继承。</li>
+<li>普通对象都隐含一个其所继承的原型的属性__proto__，除了Object.prototype这个特殊对象等。</li>
+<li>所有的函数都是Function类的实例。</li>
+<li>所有的对象都是Object类的实例。</li>
+<li>Function类是Object类的实例，Object函数也是Function类的实例。</li>
+<li>所有的函数都是对象，所以函数既有prototype属性，也有__proto__属性。</li>
+<li>原型链的最顶端是Object.prototype，该对象向上再没有原型了， Object.prototype.__proto__ === null。<br>由于Object.prototype这个对象比较特殊，它没有原型，会导致 Object.prototype instanceof Object 返回 false，这和instanceof的工作方式有关。</li>
+</ul>
+<a id="more"></a> 
+<p>我是很早就想对JS的原型链做一个总结，也推荐别人的一篇文章<a href="http://www.codeceo.com/article/javascript-prototype-learn.html" target="_blank" rel="external">JavaScript 原型概念深入理解</a>。</p>
+<p>以下是验证图：<br><img title="属性在原型链中查找" alt="属性在原型链中查找" src="http://7xp584.com1.z0.glb.clouddn.com/static/images/2015-12-27-function-prototype.png"><br><img title="属性在原型链中查找" alt="属性在原型链中查找" src="http://7xp584.com1.z0.glb.clouddn.com/static/images/2015-12-27-function-prototype-2.png"><br><img title="函数都是Function类的实例" alt="函数都是Function类的实例" src="http://7xp584.com1.z0.glb.clouddn.com/static/images/function-instance.png"><br><img title="对象都是Object类的实例" alt="对象都是Object类的实例" src="http://7xp584.com1.z0.glb.clouddn.com/static/images/object-instance.png"><br><img title="Function和Object" alt="Function和Object" src="http://7xp584.com1.z0.glb.clouddn.com/static/images/2015-12-27-function-prototype-4.png"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;JavaScript中对象的继承可以通过原型来实现，下面主要来说一下原型相关的问题。&lt;br&gt;以下是一些结论，详见文章内的验证：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;函数都有prototype属性，由函数构造的对象来继承。&lt;/li&gt;
+&lt;li&gt;普通对象都隐含一个其所继承的原型的属性__proto__，除了Object.prototype这个特殊对象等。&lt;/li&gt;
+&lt;li&gt;所有的函数都是Function类的实例。&lt;/li&gt;
+&lt;li&gt;所有的对象都是Object类的实例。&lt;/li&gt;
+&lt;li&gt;Function类是Object类的实例，Object函数也是Function类的实例。&lt;/li&gt;
+&lt;li&gt;所有的函数都是对象，所以函数既有prototype属性，也有__proto__属性。&lt;/li&gt;
+&lt;li&gt;原型链的最顶端是Object.prototype，该对象向上再没有原型了， Object.prototype.__proto__ === null。&lt;br&gt;由于Object.prototype这个对象比较特殊，它没有原型，会导致 Object.prototype instanceof Object 返回 false，这和instanceof的工作方式有关。&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://lvu.me/categories/JavaScript/"/>
+    
+      <category term="原型" scheme="http://lvu.me/categories/JavaScript/%E5%8E%9F%E5%9E%8B/"/>
+    
+    
+      <category term="javascript" scheme="http://lvu.me/tags/javascript/"/>
+    
+      <category term="prototype" scheme="http://lvu.me/tags/prototype/"/>
+    
+      <category term="原型" scheme="http://lvu.me/tags/%E5%8E%9F%E5%9E%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>angular的DOM编译过程</title>
+    <link href="http://lvu.me/2015/12/13/angular-compile/"/>
+    <id>http://lvu.me/2015/12/13/angular-compile/</id>
+    <published>2015-12-12T16:00:00.000Z</published>
+    <updated>2016-07-31T04:48:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>angular的DOM编译过程总的来说，是编译DOM，生成一个复合链接函数，然后传入scope作为参数，执行该链接函数，在scope和实际的DOM之间建立联系，编译过程结束。<br>下面主要来说一下编译DOM并生成链接函数的过程，以下分析基于<a href="https://github.com/Gpia/temp-data/blob/master/javascript/lib/angular-1.3.0.js" target="_blank" rel="external">angular-1.3.0源码</a>，由于代码很长，不在此贴出，可点击此链接查看，涉及到的内容主要从6094行开始。<br>编译DOM并生成链接函数的过程是由一个叫做compileNodes的内部方法完成的，该方法从一个指定的待编译节点列表开始编译，对于从document元素上启动的angular应用，那么待编译节点列表从一个只包含document元素（内部使用的是document的包装类型，即jqLite(document)）的数组开始，形如 [jqLite(document)]。</p>
+<a id="more"></a> 
+<p>一.具体来说compileNodes的过程：</p>
+<p>1.对于待编译节点列表nodeList中的每一个节点node，收集它上面的指令（collectDirectives），然后对该节点node应用指令（applyDirectivesToNode），调用applyDirectivesToNode方法会返回一个当前node的链接函数nodeLinkFn；接着，如果有子节点，则重复步骤1，并传入子节点列表childNodes作为参数，生成childNodeLinkFn。<br>2.将nodeLinkFn和childLinkFn加入一个linkFns数组，保存（linkFns.push(i, nodeLinkFn, childLinkFn)，i是node在nodeList中的索引）即linkFns中包含了待编译节点列表中每一个node的nodeLinkFn和childLinkFn。<br>3.返回一个复合链接函数compositeLinkFn。</p>
+<p>通过以上3步compileNodes已经执行结束，此过程中DOM中指令的编译过程已经完成，即已经完成了指令的变换（applyDirectivesToNode方法），比如用指令的模板替换指令的占位元素。</p>
+<p>还通过上述步骤，compileNodes返回的是一个复合链接函数compositeLinkFn，applyDirectivesToNode返回的是一个普通的链接函数nodeLinkFn，<br>复合链接函数用于执行当前节点node的nodeLinkFn和当前节点子节点的childLinkFn，其中由于childLinkFn是由compileNodes的递归调用返回的，所以它是一个复合链接函数，而当前节点的nodeLinkFn是由applyDirectivesToNode返回的，是一个普通的链接函数。即compositeLinkFn的执行到最后都是nodeLinkFn的执行。</p>
+<p>实际上，上述步骤3返回的链接函数构成了一个闭包，它在执行时能够访问到上面的linkFns。</p>
+<p>二.上面步骤3返回的的复合链接函数的执行过程（传入参数：scope,nodeList，rootElement。）</p>
+<p>1.遍历linkFns，每一次遍历，都取出一个节点索引i，nodeLinkFn（普通链接函数）和childLinkFn（复合链接函数），通过nodeList[i]获取nodeLinkFn对应的节点node。<br>2.对于当前节点node，<br>  如果有nodeLinkFn，则首先根据nodeLinkFn包含的信息nodeLinkFn.scope生成恰当的子scope，如果有子scope，则childScope=scope.$new()，否则childScope=scope，然后执行nodeLinkFn，即nodeLinkFn(childLinkFn, childScope, node, $rootElement, childBoundTranscludeFn);<br>  如果没有nodeLinkFn，但有childLinkFn，则执行childLinkFn，即回到步骤1，继续执行子复合链接函数： childLinkFn(scope, node.childNodes, undefined, parentBoundTranscludeFn)。<br>3.执行结束。</p>
+<p>重点说明：compileNodes方法处理的是模板DOM（对应compileNode），nodeLinkFn方法执行时是针对已经是编译后的DOM（对应linkNode），那么问题来了，linkFns数组中保存的node索引i，是在模板DOM中的顺序，而compositeLinkFn执行时却根据它从编译后的DOM中取node，对应不上？首先，对于有模板的指令，模板只能有一个根节点，即compileNode和linkNode是一一对应的，对于没有模板的指令，则compileNode===linkNode。再关键在于applyDirectivesToNode方法，该方法处理compileNode并最终返回了一个能够处理linkNode的nodeLinkFn，所以在nodeLinkFn在 最后执行的时候，既能够访问到compileNode（闭包），也能够访问到其该compileNode在变换之后对应的linkNode（参数），它在内部做了处理。</p>
+<p>由上面我们知道，复合链接函数compileLinkFn的执行最后都是nodeLinkFn的执行，而nodeLinkFn是由applyDirectivesToNode方法返回的，顾名思义，它将指令应用到节点，完成了模板DOM到最终DOM的转换。</p>
+<p>三.applyDirectivesToNode的执行过程(待完成)</p>
+<p>四.nodeLinkFn的执行过程(待完成)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;angular的DOM编译过程总的来说，是编译DOM，生成一个复合链接函数，然后传入scope作为参数，执行该链接函数，在scope和实际的DOM之间建立联系，编译过程结束。&lt;br&gt;下面主要来说一下编译DOM并生成链接函数的过程，以下分析基于&lt;a href=&quot;https://github.com/Gpia/temp-data/blob/master/javascript/lib/angular-1.3.0.js&quot;&gt;angular-1.3.0源码&lt;/a&gt;，由于代码很长，不在此贴出，可点击此链接查看，涉及到的内容主要从6094行开始。&lt;br&gt;编译DOM并生成链接函数的过程是由一个叫做compileNodes的内部方法完成的，该方法从一个指定的待编译节点列表开始编译，对于从document元素上启动的angular应用，那么待编译节点列表从一个只包含document元素（内部使用的是document的包装类型，即jqLite(document)）的数组开始，形如 [jqLite(document)]。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://lvu.me/categories/JavaScript/"/>
+    
+      <category term="AngularJS" scheme="http://lvu.me/categories/JavaScript/AngularJS/"/>
+    
+    
+      <category term="AngularJS" scheme="http://lvu.me/tags/AngularJS/"/>
+    
+      <category term="javascript" scheme="http://lvu.me/tags/javascript/"/>
+    
+      <category term="compile" scheme="http://lvu.me/tags/compile/"/>
+    
+      <category term="编译" scheme="http://lvu.me/tags/%E7%BC%96%E8%AF%91/"/>
+    
+  </entry>
+  
+</feed>

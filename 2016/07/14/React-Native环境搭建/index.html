@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>React Native环境搭建 | 就爱萌萌哒</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近尝试了下React Native，官网的安装教程，已经写的非常详细了，但是我在环境配置的过程中，还是发现了一些大坑。
+重点是watchman的版本得是4.0以上！
+如果你按找官方的教程，搭建好了Android或者IOS的开发环境，安装了watchman，在使用react native跑示例程序的时候，报错，出现一些奇怪的报错，那么很大可能就是这个原因！尤其是mac，在可能已经安装了watchm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Native环境搭建">
+<meta property="og:url" content="http://lvu.me/2016/07/14/React-Native环境搭建/index.html">
+<meta property="og:site_name" content="就爱萌萌哒">
+<meta property="og:description" content="最近尝试了下React Native，官网的安装教程，已经写的非常详细了，但是我在环境配置的过程中，还是发现了一些大坑。
+重点是watchman的版本得是4.0以上！
+如果你按找官方的教程，搭建好了Android或者IOS的开发环境，安装了watchman，在使用react native跑示例程序的时候，报错，出现一些奇怪的报错，那么很大可能就是这个原因！尤其是mac，在可能已经安装了watchm">
+<meta property="og:updated_time" content="2016-07-31T04:48:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React Native环境搭建">
+<meta name="twitter:description" content="最近尝试了下React Native，官网的安装教程，已经写的非常详细了，但是我在环境配置的过程中，还是发现了一些大坑。
+重点是watchman的版本得是4.0以上！
+如果你按找官方的教程，搭建好了Android或者IOS的开发环境，安装了watchman，在使用react native跑示例程序的时候，报错，出现一些奇怪的报错，那么很大可能就是这个原因！尤其是mac，在可能已经安装了watchm">
+  
+    <link rel="alternative" href="/atom.xml" title="就爱萌萌哒" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">就爱萌萌哒</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Talk is cheap, Show me the code.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://lvu.me"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-React-Native环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/14/React-Native环境搭建/" class="article-date">
+  <time datetime="2016-07-14T15:28:33.000Z" itemprop="datePublished">2016-07-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>►<a class="article-category-link" href="/categories/JavaScript/React/">React</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      React Native环境搭建
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近尝试了下React Native，<a href="https://facebook.github.io/react-native/docs/getting-started.html#content" target="_blank" rel="external">官网的安装教程</a>，已经写的非常详细了，但是我在环境配置的过程中，还是发现了一些大坑。</p>
+<p><strong><em>重点是watchman的版本得是4.0以上！</em></strong></p>
+<p>如果你按找官方的教程，搭建好了Android或者IOS的开发环境，安装了<a href="https://facebook.github.io/watchman" target="_blank" rel="external">watchman</a>，在使用react native跑示例程序的时候，报错，出现一些奇怪的报错，那么很大可能就是这个原因！尤其是mac，在可能已经安装了watchman的情况下，需要卸载老版本，重新安装最新的版本。</p>
+<a id="more"></a> 
+<p>在mac上，可以使用Homebrew安装最新版watchman的命令是：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">watchman -v  <span class="comment">#查看watchman的版本</span></div><div class="line">brew uninstall watchman  <span class="comment">#卸载</span></div><div class="line">brew unlink watchman  </div><div class="line">brew install --HEAD watchman  <span class="comment">#通过github直接安装最新版本的watchman</span></div></pre></td></tr></table></figure></p>
+<p>如果是开发React Native的Android程序，那么需要先搭建Android开发环境，如果是开发IOS的程序，需要先搭建IOS的开发环境。<br>按照教程上的，如果是开发Android应用，那么需要配置Android开发环境，当然最方便的就是，直接下载Android官方开发工具<a href="https://developer.android.com/studio/install.html" target="_blank" rel="external">Android Studio</a>，如果不能翻墙上不去，就去这里找一找<a href="http://www.androiddevtools.cn/" target="_blank" rel="external">http://www.androiddevtools.cn/</a>。然后打开里面的Android SDK Manager下载相应的sdk、模拟器镜像等等，并将Android SDK的路径加入用户环境变量，用于在命令行被调用。注意MAC和windows平台上环境变量的设置。</p>
+<p>对于Android方式，借助Android Studio可以方便地创建安卓模拟器、启动模拟器，然后，在其上跑React Native的应用。<br>对于IOS，好像只能是在mac上开发，有了xcode，安装ios模拟器之后，就和安卓的方式一样了。</p>
+<p>下面列出一些Android开发常用的命令（来自android sdk，请确保android sdk路径已经被加入path环境变量），比如通过命令行创建模拟器或者启动模拟器，虚拟机即模拟器。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">android list avd  <span class="comment">#查看所有的虚拟机</span></div><div class="line">android create avd  <span class="comment">#创建虚拟机</span></div><div class="line">emulator -avd avd-name  <span class="comment">#启动虚拟机，avd-name 不要带后缀.avd</span></div><div class="line">adb devices  <span class="comment">#查看已经启动的安卓设备（包括模拟器和通过usb连接的手机）</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+     <!-- <a data-url="http://lvu.me/2016/07/14/React-Native环境搭建/" data-id="cire5myax00067ps6dxfx3f6h" class="article-share-link">Share</a> -->
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react-native/">react native</a></li></ul>
+
+      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+      
+        
+<nav id="article-nav">
+  
+    <a href="/2016/08/03/对linux文件权限的理解/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          对linux文件权限的理解
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/26/阳光正好/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">阳光正好</div>
+    </a>
+  
+</nav>
+
+      
+      
+          
+  <section id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-React-Native环境搭建" data-title="React Native环境搭建" data-url="http://lvu.me/2016/07/14/React-Native环境搭建/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'gpia'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
+  </section>
+  
+
+      
+    </footer>
+  </div>
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/AngularJS/">AngularJS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/React/">React</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/原型/">原型</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/权限/">权限</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/compile/">compile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prototype/">prototype</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-native/">react native</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型/">原型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/双向绑定/">双向绑定</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令/">命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/权限/">权限</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编译/">编译</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脏数据检测/">脏数据检测</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AngularJS/" style="font-size: 15px;">AngularJS</a> <a href="/tags/compile/" style="font-size: 10px;">compile</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/react-native/" style="font-size: 10px;">react native</a> <a href="/tags/原型/" style="font-size: 10px;">原型</a> <a href="/tags/双向绑定/" style="font-size: 10px;">双向绑定</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/权限/" style="font-size: 10px;">权限</a> <a href="/tags/编译/" style="font-size: 10px;">编译</a> <a href="/tags/脏数据检测/" style="font-size: 10px;">脏数据检测</a> <a href="/tags/随想/" style="font-size: 15px;">随想</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/08/03/对linux文件权限的理解/">对linux文件权限的理解</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/14/React-Native环境搭建/">React Native环境搭建</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/26/阳光正好/">阳光正好</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/28/AnglarJS-Tips/">AnglarJS Tips（持续更新）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/23/随想2016-05-23/">随想</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 <a href="https://github.com/gpia">gpia</a><br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      <span class="cnzz-analytics">
+<!-- CNZZ Analytics -->
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256812837'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1256812837' type='text/javascript'%3E%3C/script%3E"));</script>
+<!-- CNZZ Analytics -->
+</span>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="http://apps.bdimg.com/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
