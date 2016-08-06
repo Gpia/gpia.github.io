@@ -93,28 +93,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>*nix系统中，文件的各种权限比较重要，以下内容，是通过学习《鸟哥的linxu私房菜》之后总结的内容，方便自己理解和记忆。这篇文章最早发布于<a href="http://www.cnblogs.com/ilvu/p/4002992.html" target="_blank" rel="external">我的博客园</a>。</p>
-<p>档案 和 目录 都有权限：r、w 、x，并且对于 拥有者（属主），同组用户，其他用户 都有对应的权限限制。</p>
+        <p>*nix系统中，文件的各种权限比较重要，以下内容，是通过学习《鸟哥的linxu私房菜》之后总结的内容，方便自己理解和记忆。这篇文章最早发布于<a href="http://www.cnblogs.com/ilvu/p/4002992.html">我的博客园</a>。</p>
+<p>文件和目录都有权限：r、w 、x，并且对于 拥有者（属主），同组用户，其他用户 都有对应的权限限制。</p>
 <ul>
-<li>对于档案（即文件）：r代表读，可读取文件的内容；w代表写，可修改文件的内容；x代表执行，可以执行文件</li>
-<li>对于目录（记录文件清单）：r代表可以列出其中的档案相关信息；w代表目录下文件和目录的删除、重命名、新建；x代表可以以该目录作为工作目录</li>
+<li>对于文件：r代表读，可读取文件的内容；w代表写，可修改文件的内容；x代表执行，可以执行文件</li>
+<li>对于目录（记录文件清单）：r代表可以列出其中文件的相关信息；w代表目录下文件和目录的删除、重命名、新建；x代表可以以该目录作为工作目录</li>
 </ul>
 <p>总结：</p>
 <ul>
-<li>文件的访问及使用限制由文件本身的权限决定，但是文件名称的修改、文件本身的删除是由文件所在目录的w权限决定的。</li>
-<li>文件的拥有着或者root可以修改档案或者目录的权限。</li>
+<li>文件的访问及使用限制由文件本身的权限决定，但是文件名称的修改、文件本身的删除是由文件所在目录的w权限决定的</li>
+<li>文件的拥有着或者root可以修改文件或者目录的权限</li>
 </ul>
-<p>显然的，对于所有以文件的方式存在的命令，它们也有权限，所以，比如cd、ls等系统提供的命令也是有权限的，可以通过删除其x权限禁止用户使用该命令。<br>用户使用系统：即用户通过一个程序去操作文件或档案，要顺利进行这一动作，得满足两个条件：</p>
-<ul>
-<li>对该程序文件的执行权限，如对 cd 、ls 等的x权限</li>
-<li>对要操作的目标文件的访问权限，如r，w</li>
-</ul>
-<p>举例：用户 dvid 进行操作：vim test.cpp，首先 dvid 得具有 vim 程式的执行权限：x，其次 dvid 得具有 test.cpp 的读写权限：rw</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2016/08/03/对linux文件权限的理解/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-     <!-- <a data-url="http://lvu.me/2016/08/03/对linux文件权限的理解/" data-id="cire7mh3a0008aps6ulgbl17n" class="article-share-link">Share</a> -->
+     <!-- <a data-url="http://lvu.me/2016/08/03/对linux文件权限的理解/" data-id="cirilvwym000b6ss6t3p0lxtc" class="article-share-link">Share</a> -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/命令/">命令</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/权限/">权限</a></li></ul>
 
@@ -168,7 +166,7 @@
       
     </div>
     <footer class="article-footer">
-     <!-- <a data-url="http://lvu.me/2016/07/14/React-Native环境搭建/" data-id="cire7mh320005aps6j8hiw5s0" class="article-share-link">Share</a> -->
+     <!-- <a data-url="http://lvu.me/2016/07/14/React-Native环境搭建/" data-id="cirilvwyb00066ss6celvfk3d" class="article-share-link">Share</a> -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react-native/">react native</a></li></ul>
 
@@ -216,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-     <!-- <a data-url="http://lvu.me/2016/06/26/阳光正好/" data-id="cire7mh3d000aaps6vnwsfruu" class="article-share-link">Share</a> -->
+     <!-- <a data-url="http://lvu.me/2016/06/26/阳光正好/" data-id="cirilvwxu00026ss6lxeu4qc9" class="article-share-link">Share</a> -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随想/">随想</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 
@@ -270,7 +268,7 @@
       
     </div>
     <footer class="article-footer">
-     <!-- <a data-url="http://lvu.me/2016/05/28/AnglarJS-Tips/" data-id="cire7mh2w0002aps69nxsmc3i" class="article-share-link">Share</a> -->
+     <!-- <a data-url="http://lvu.me/2016/05/28/AnglarJS-Tips/" data-id="cirilvwy400056ss6uzjje0l1" class="article-share-link">Share</a> -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AngularJS/">AngularJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双向绑定/">双向绑定</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/脏数据检测/">脏数据检测</a></li></ul>
 
@@ -321,7 +319,7 @@
       
     </div>
     <footer class="article-footer">
-     <!-- <a data-url="http://lvu.me/2016/05/23/随想2016-05-23/" data-id="cire7mh3g000baps6lup3ns39" class="article-share-link">Share</a> -->
+     <!-- <a data-url="http://lvu.me/2016/05/23/随想2016-05-23/" data-id="cirilvwyg000a6ss68dlky1w6" class="article-share-link">Share</a> -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随想/">随想</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 
