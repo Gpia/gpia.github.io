@@ -99,26 +99,16 @@
 <li>.可以匹配任意字符，包括字母，数字，空白符，标点等</li>
 <li>[和]定义一个字符组，匹配任何在该组中的字符（不含[和]），如[ab]匹配a和b，对于asc码连续的字符，可以使用-简写，如[a-z]匹配任何一个小写字母</li>
 <li>[，]和^可以一起定义一个取非的字符组，如[^ab]匹配任何不是a，不是b的字符</li>
-<li>一些预定义的元字符，\n换行符，\r回车符，\t制表符（Tab键），\v垂直制表符，\f换页符，[\b]Backspace键</li>
-<li>一些预定义的元字符组，\d任何一个数字字符（等价于[0-9]），\D任何一个非数字字符（等价于[^0-9]），\w任何一个字母数字字符或者下划线字符（等价于[0-9a-zA-Z<em>]），\W任何一个非字母数字或非下划线字符（等价于[^0-9a-zA-Z</em>]），\s任何一个空白符（等价于[\f\n\r\t\v]），\S任何一个非空白字符（等价于[^\f\n\r\t\v]），[\b]比较特殊，它在\S的覆盖范围里面</li>
-<li>+匹配一个或多个，*匹配0个或多个，?匹配0个或1个</li>
-<li>{n}匹配n个，{n,m}匹配最少n个，最多m个，{n, }匹配至少n个</li>
-<li>常用的匹配元字符是贪婪型的，即它会尽可能多的匹配，比如字符串：abcdef，正则：.*，他会匹配整个字符串，而不是a或者别的。因此，我们可以使用它们的懒惰型版本，他会匹配尽可能少的字符。懒惰型版本是在贪婪型后面加一个?。*对应*?，+对应+?，{n, }对应{n, }?</li>
-<li>\b匹配一个单词边界，即单词的开始或者单词的结束（单词指\w定义的字符或其组合），\B匹配非单词边界</li>
-<li>^匹配一个字符串开头，$匹配一个字符串结尾，?m开启多行匹配（如果支持的话）</li>
-<li>(和)定义一个子表达式，它将被视为一个独立的元素，(ab){3}匹配连续的3个ab，如 ababab</li>
-<li>|字符是正则表达式里面的或字符，a|b将匹配a或者b</li>
-<li>使用\1，\2等引用前面匹配的子表达式，这就是回溯匹配</li>
-<li>(?=)正向前查找，(?!)负向前查找，(?&lt;=)正向后查找，(?&lt;!)负向后查找。此处的正指的匹配，负指的是不匹配，前指的是字符串中模式代表的部分右边，后指的是左边。此部分特性有的语言或者应用可能不支持不完整</li>
-<li>回溯引用条件，使用形式：(?(backreference)true-regex|false-regex)，其中backreference为回溯引用1，2等，不用\</li>
-<li>前后查找条件，使用形式：(?(loookaround)true-regex|false-regex)，其中loookaround为一个完整的前后查找表达式</li>
 </ol>
-<p>上面就是正则表达式的基本语法了，有些特性可能会有兼容性问题，使用时请查看具体语言的支持。<br>在具体使用正则表达式的时候，对于同一个问题，往往有多种解法，这是灵活性。不同的语言（如JavaScript，Java，PHP，Python，Perl，C#，C，C++等等），不同的应用（如grep，MySQL，Sublime等等）都支持正则表达式，当然他们的支持程度可能不一致，尤其是一些不常用的特性。<br>有一点需要牢记：把必须匹配的情况考虑周全并写出一个匹配结果符合预期的正则表达式很容易，但把不需要匹配的情况也考虑周全并确保它们都将被排除在匹配结果以外往往要困难得多。</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2016/08/07/正则表达式入门/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-     <!-- <a data-url="http://lvu.me/2016/08/07/正则表达式入门/" data-id="cirkeerkf000d63s6cjlijtya" class="article-share-link">Share</a> -->
+     <!-- <a data-url="http://lvu.me/2016/08/07/正则表达式入门/" data-id="cirkeh12u000a6os6u5fwsphs" class="article-share-link">Share</a> -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
 
@@ -180,7 +170,7 @@
       
     </div>
     <footer class="article-footer">
-     <!-- <a data-url="http://lvu.me/2016/08/03/对linux文件权限的理解/" data-id="cirkeerk6000763s6fhnb12l1" class="article-share-link">Share</a> -->
+     <!-- <a data-url="http://lvu.me/2016/08/03/对linux文件权限的理解/" data-id="cirkeh12l00066os6ks5d9z2v" class="article-share-link">Share</a> -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/命令/">命令</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/权限/">权限</a></li></ul>
 
@@ -234,7 +224,7 @@
       
     </div>
     <footer class="article-footer">
-     <!-- <a data-url="http://lvu.me/2016/07/14/React-Native环境搭建/" data-id="cirkeerk3000563s6hte7y8pb" class="article-share-link">Share</a> -->
+     <!-- <a data-url="http://lvu.me/2016/07/14/React-Native环境搭建/" data-id="cirkeh12h00056os6941itiw4" class="article-share-link">Share</a> -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react-native/">react native</a></li></ul>
 
@@ -282,7 +272,7 @@
       
     </div>
     <footer class="article-footer">
-     <!-- <a data-url="http://lvu.me/2016/06/26/阳光正好/" data-id="cirkeerk9000963s6e0tq3zqf" class="article-share-link">Share</a> -->
+     <!-- <a data-url="http://lvu.me/2016/06/26/阳光正好/" data-id="cirkeh12x000b6os6tzkl29fg" class="article-share-link">Share</a> -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随想/">随想</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 
@@ -336,7 +326,7 @@
       
     </div>
     <footer class="article-footer">
-     <!-- <a data-url="http://lvu.me/2016/05/28/AnglarJS-Tips/" data-id="cirkeerjf000063s6yfzotw9c" class="article-share-link">Share</a> -->
+     <!-- <a data-url="http://lvu.me/2016/05/28/AnglarJS-Tips/" data-id="cirkeh12900026os69itl4w0m" class="article-share-link">Share</a> -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AngularJS/">AngularJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双向绑定/">双向绑定</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/脏数据检测/">脏数据检测</a></li></ul>
 
