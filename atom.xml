@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lvu.me/"/>
-  <updated>2016-08-07T10:48:52.000Z</updated>
+  <updated>2016-08-10T15:18:31.000Z</updated>
   <id>http://lvu.me/</id>
   
   <author>
@@ -14,6 +14,114 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript对正则表达式的支持</title>
+    <link href="http://lvu.me/2016/08/07/JavaScript%E5%AF%B9%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E6%94%AF%E6%8C%81/"/>
+    <id>http://lvu.me/2016/08/07/JavaScript对正则表达式的支持/</id>
+    <published>2016-08-07T10:57:36.000Z</published>
+    <updated>2016-08-10T15:18:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>正则表达式是一种强大的工具，具体语法请看我的另一篇博客<a href="/2016/08/07/正则表达式入门/">正则表达式入门</a>，现在我们来看看正则表达式在JavaScript中的应用。<br>JavaScript对正则表达式的支持主要是由正则表达式类RegExp和字符串类String来提供的。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>所属类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>exec</td>
+<td>RegExp</td>
+</tr>
+<tr>
+<td>test</td>
+<td>RegExp</td>
+</tr>
+<tr>
+<td>match</td>
+<td>String</td>
+</tr>
+<tr>
+<td>replace</td>
+<td>String</td>
+</tr>
+<tr>
+<td>search</td>
+<td>String</td>
+</tr>
+<tr>
+<td>split</td>
+<td>String</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a> 
+<p>在JavaScript中创建正则表达式对象，有两种方式：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//方法1，使用正则表达式类RegExp</span></div><div class="line"><span class="comment">//参数1为模式，参数2为属性（可省略，默认不开启）</span></div><div class="line"><span class="comment">//i 忽略大小写，g 全局匹配，m 开启多行匹配</span></div><div class="line"><span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'[ab]c'</span>, <span class="string">'gim'</span>);</div><div class="line"></div><div class="line"><span class="comment">//方法2，使用正则表达式字面量</span></div><div class="line"><span class="comment">//使用/作为模式的开始和结束符号，后面紧接属性，意义同上</span></div><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/[ab]c/gim</span>;</div></pre></td></tr></table></figure></p>
+<p>有了正则表达式对象，我们可以直接使用正则表达式对象的方法 exec。<br>exec 方法接收一个字符串作为参数，对这个字符串进行正则匹配，如果没有匹配则返回null，否则返回一个结果数组。返回的数组第一项为整个模式的匹配值，后面依次为各个分组（子表达式）匹配的结果。如果没有开启全局匹配 g，它每次执行，总是返回第一个符合模式的匹配，否则它将每次返回下一个匹配，直到没有符合的匹配返回null，之后重新从第1个匹配开始返回。所以可以通过循环找到一个字符串中所有的匹配。<br>顺便说一句，这个结果数组，它上面还有两个属性，index：匹配的开始位置，input：原始文本，感兴趣的自行查看，我们先忽略这个。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'so wo know the number is 100, and total is 666.'</span>;</div><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w*)\s*is\s*(\d+)/</span>; </div><div class="line"><span class="keyword">var</span> result = reg.exec(str);  <span class="comment">//result: ["number is 100", "number", "100"]</span></div><div class="line">result = reg.exec(str);  <span class="comment">//再次执行，result依然为 ["number is 100", "number", "100"]</span></div><div class="line"></div><div class="line"><span class="comment">//开启全局匹配</span></div><div class="line">reg = <span class="regexp">/(\w*)\s*is\s*(\d+)/g</span>;</div><div class="line">result = reg.exec(str);  <span class="comment">//result: ["number is 100", "number", "100"]</span></div><div class="line">result = reg.exec(str);  <span class="comment">//接着执行，result: ["total is 666", "total", "666"]</span></div><div class="line">result = reg.exec(str);  <span class="comment">//接着执行，result: null</span></div><div class="line">result = reg.exec(str);  <span class="comment">//接着执行，重新开始匹配，result: ["number is 100", "number", "100"]</span></div></pre></td></tr></table></figure>
+<p>下面，我们通过循环输出所有的匹配<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'so wo know the number is 100, and total is 666.'</span>;</div><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w*)\s*is\s*(\d+)/g</span>; </div><div class="line"><span class="keyword">var</span> result, allResult = [];</div><div class="line"><span class="keyword">while</span> (result = reg.exec(str)) &#123;</div><div class="line">    allResult.push(result);			</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(allResult);  <span class="comment">// allResult: [["number is 100", "number", "100"], ["total is 666", "total", "666"]]</span></div></pre></td></tr></table></figure></p>
+<p>至于正则表达式对象的 test 方法，用于测试一个字符串是否匹配这个模式，如果匹配则返回true，否则为false，此时是否全局匹配无影响。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'so wo know the number is 100, and total is 666.'</span>;</div><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w*)\s*is\s*(\d+)/</span>; </div><div class="line"><span class="keyword">var</span> reg1 = <span class="regexp">/not-found/</span>;</div><div class="line"><span class="built_in">console</span>.log(reg.test(str));  <span class="comment">//true</span></div><div class="line"><span class="built_in">console</span>.log(reg1.test(str)); <span class="comment">//false</span></div></pre></td></tr></table></figure></p>
+<p>接下来看下字符串中支持正则表达式的相关方法，以下这些方法都可以接受一个普通的字符串作为参数，这里不谈。</p>
+<p>字符串的 match 方法可以接收一个正则表达式作为参数，在字符串内检索与正则相匹配的内容。当正则表达式没有g标志时，返回结果和 RegExp 的 exec 返回结果相同，即如果找到，则返回一个数组，数组第0项为该模式的匹配文本，后面的项依次是子表达式匹配的内容，该返回数组还有 input 和 index属性（先忽略这个）；当正则表达式有g标志时，返回结果则不同，此时，返回的也是一个数组，但是里面的每一项是该模式的所有匹配文本，不含子表达式信息。如果不匹配，返回null。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'so wo know the number is 100, and total is 666.'</span>;</div><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w*)\s*is\s*(\d+)/</span>; </div><div class="line"><span class="built_in">console</span>.log(str.match(reg));  <span class="comment">//["number is 100", "number", "100"]</span></div><div class="line"></div><div class="line">reg = <span class="regexp">/(\w*)\s*is\s*(\d+)/g</span>;  <span class="comment">//加入全局标志</span></div><div class="line"><span class="built_in">console</span>.log(str.match(reg));  <span class="comment">//["number is 100", "total is 666"]</span></div></pre></td></tr></table></figure></p>
+<p>字符串的 replace 方法也可以接收一个正则表达式作为第一个参数，第二个参数可以是字符串或者一个方法，当第二个参数是字符串的时候，可以使用一些特定符号：$n，n &lt; 99，表示第n个子表达式对应的匹配，$&amp;表示与正则表达式相匹配的文本，$`是位于匹配子串左侧的文本，$’是位于匹配子串右侧的文本，$$是插入$符号。<br>当第二个参数是方法的时候，其参数就是 match 时候结果数组依次传入，返回值作为本次匹配的替换结果。如果正则表达式有g标志，则会多次替换，直到全部替换完毕。replace方法会返回替换后的结果，但是对原字符串没有任何影响。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w+)\s(\w+)/</span>;</div><div class="line"><span class="keyword">var</span> str = <span class="string">'John Smith'</span>;</div><div class="line"><span class="keyword">var</span> newstr = str.replace(reg, <span class="string">'$2, $1'</span>);  <span class="comment">//使用字符串参数替换</span></div><div class="line"><span class="built_in">console</span>.log(newstr);  <span class="comment">// Smith, John</span></div><div class="line"></div><div class="line"><span class="comment">//下面写一个转换方法，用于将驼峰式明明转换成-连接</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">nameFormat</span>(<span class="params">oldName</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> oldName.replace(<span class="regexp">/[A-Z]/g</span>, <span class="function"><span class="keyword">function</span> (<span class="params">match</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'-'</span> + match.toLowerCase();</div><div class="line">    &#125;);	</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(nameFormat(<span class="string">'tooLongNameFor'</span>));   <span class="comment">//too-long-name-for</span></div></pre></td></tr></table></figure></p>
+<p>字符串的 search 方法可以接收一个正则表达式对象作为参数，如果可以匹配，那么返回匹配的起始位置，否则返回-1。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'so wo know the number is 100, and total is 666.'</span>;</div><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w*)\s*is\s*(\d+)/</span>; </div><div class="line"><span class="built_in">console</span>.log(str.search(reg));  <span class="comment">//15</span></div></pre></td></tr></table></figure></p>
+<p>字符串的 split 方法可以接收一个正则表达式对象作为参数，将字符串使用匹配的子串分隔。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'JavaScript,RegExp match，use'</span>;</div><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/,|\s+|，/</span>;  <span class="comment">//将使用英文逗号，中文逗号或者空格分隔的字符串分隔关键词</span></div><div class="line"><span class="built_in">console</span>.log(str.split(reg));  <span class="comment">//["JavaScript", "RegExp", "match", "use"]</span></div></pre></td></tr></table></figure></p>
+<p>除了以上内容，还有 RegExp 这个类的一点知识点，每次执行依次正则表达式匹配，那么就会有一些信息被保存在 RegExp 类的静态属性上。RegExp 的 $1 到 $9 保存9个子表达式的匹配文本，lastMatch（简写 $&amp;）是最后一个匹配的串，lastParen（简写 $+）是最后一个子表达式匹配的串，leftContext（简写 $`）是匹配串的左侧的所有文本，rightContext（简写 $’）是匹配串的右侧的所有文本，input 保存当前作用的字符串。</p>
+<p>好了，正则表达式中的正则大概讲完了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;正则表达式是一种强大的工具，具体语法请看我的另一篇博客&lt;a href=&quot;/2016/08/07/正则表达式入门/&quot;&gt;正则表达式入门&lt;/a&gt;，现在我们来看看正则表达式在JavaScript中的应用。&lt;br&gt;JavaScript对正则表达式的支持主要是由正则表达式类RegExp和字符串类String来提供的。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;方法&lt;/th&gt;
+&lt;th&gt;所属类&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;exec&lt;/td&gt;
+&lt;td&gt;RegExp&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;test&lt;/td&gt;
+&lt;td&gt;RegExp&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;match&lt;/td&gt;
+&lt;td&gt;String&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;replace&lt;/td&gt;
+&lt;td&gt;String&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;search&lt;/td&gt;
+&lt;td&gt;String&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;split&lt;/td&gt;
+&lt;td&gt;String&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+    
+    </summary>
+    
+      <category term="正则表达式" scheme="http://lvu.me/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+      <category term="应用" scheme="http://lvu.me/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E5%BA%94%E7%94%A8/"/>
+    
+    
+      <category term="正则表达式" scheme="http://lvu.me/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+      <category term="JavaScript" scheme="http://lvu.me/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>正则表达式入门</title>
@@ -220,9 +328,9 @@
       <category term="AngularJS" scheme="http://lvu.me/categories/JavaScript/AngularJS/"/>
     
     
-      <category term="AngularJS" scheme="http://lvu.me/tags/AngularJS/"/>
-    
       <category term="javascript" scheme="http://lvu.me/tags/javascript/"/>
+    
+      <category term="AngularJS" scheme="http://lvu.me/tags/AngularJS/"/>
     
       <category term="双向绑定" scheme="http://lvu.me/tags/%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/"/>
     
@@ -342,9 +450,9 @@
       <category term="AngularJS" scheme="http://lvu.me/categories/JavaScript/AngularJS/"/>
     
     
-      <category term="AngularJS" scheme="http://lvu.me/tags/AngularJS/"/>
-    
       <category term="javascript" scheme="http://lvu.me/tags/javascript/"/>
+    
+      <category term="AngularJS" scheme="http://lvu.me/tags/AngularJS/"/>
     
       <category term="compile" scheme="http://lvu.me/tags/compile/"/>
     

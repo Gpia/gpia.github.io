@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScript对正则表达式的支持 | 就爱萌萌哒</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="正则表达式是一种强大的工具，具体语法请看我的另一篇博客正则表达式入门，现在我们来看看正则表达式在JavaScript中的应用。JavaScript对正则表达式的支持主要是由正则表达式类RegExp和字符串类String来提供的。
+
+
+
+方法
+所属类
+
+
+
+
+exec
+RegExp
+
+
+test
+RegExp
+
+
+match
+String
+
+
+replace
+String
+
+
+search
+Stri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript对正则表达式的支持">
+<meta property="og:url" content="http://lvu.me/2016/08/07/JavaScript对正则表达式的支持/index.html">
+<meta property="og:site_name" content="就爱萌萌哒">
+<meta property="og:description" content="正则表达式是一种强大的工具，具体语法请看我的另一篇博客正则表达式入门，现在我们来看看正则表达式在JavaScript中的应用。JavaScript对正则表达式的支持主要是由正则表达式类RegExp和字符串类String来提供的。
+
+
+
+方法
+所属类
+
+
+
+
+exec
+RegExp
+
+
+test
+RegExp
+
+
+match
+String
+
+
+replace
+String
+
+
+search
+Stri">
+<meta property="og:updated_time" content="2016-08-10T15:18:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript对正则表达式的支持">
+<meta name="twitter:description" content="正则表达式是一种强大的工具，具体语法请看我的另一篇博客正则表达式入门，现在我们来看看正则表达式在JavaScript中的应用。JavaScript对正则表达式的支持主要是由正则表达式类RegExp和字符串类String来提供的。
+
+
+
+方法
+所属类
+
+
+
+
+exec
+RegExp
+
+
+test
+RegExp
+
+
+match
+String
+
+
+replace
+String
+
+
+search
+Stri">
+  
+    <link rel="alternative" href="/atom.xml" title="就爱萌萌哒" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">就爱萌萌哒</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Talk is cheap, Show me the code.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://lvu.me"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JavaScript对正则表达式的支持" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/07/JavaScript对正则表达式的支持/" class="article-date">
+  <time datetime="2016-08-07T10:57:36.000Z" itemprop="datePublished">2016-08-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/正则表达式/">正则表达式</a>►<a class="article-category-link" href="/categories/正则表达式/应用/">应用</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript对正则表达式的支持
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>正则表达式是一种强大的工具，具体语法请看我的另一篇博客<a href="/2016/08/07/正则表达式入门/">正则表达式入门</a>，现在我们来看看正则表达式在JavaScript中的应用。<br>JavaScript对正则表达式的支持主要是由正则表达式类RegExp和字符串类String来提供的。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>所属类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>exec</td>
+<td>RegExp</td>
+</tr>
+<tr>
+<td>test</td>
+<td>RegExp</td>
+</tr>
+<tr>
+<td>match</td>
+<td>String</td>
+</tr>
+<tr>
+<td>replace</td>
+<td>String</td>
+</tr>
+<tr>
+<td>search</td>
+<td>String</td>
+</tr>
+<tr>
+<td>split</td>
+<td>String</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a> 
+<p>在JavaScript中创建正则表达式对象，有两种方式：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//方法1，使用正则表达式类RegExp</span></div><div class="line"><span class="comment">//参数1为模式，参数2为属性（可省略，默认不开启）</span></div><div class="line"><span class="comment">//i 忽略大小写，g 全局匹配，m 开启多行匹配</span></div><div class="line"><span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'[ab]c'</span>, <span class="string">'gim'</span>);</div><div class="line"></div><div class="line"><span class="comment">//方法2，使用正则表达式字面量</span></div><div class="line"><span class="comment">//使用/作为模式的开始和结束符号，后面紧接属性，意义同上</span></div><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/[ab]c/gim</span>;</div></pre></td></tr></table></figure></p>
+<p>有了正则表达式对象，我们可以直接使用正则表达式对象的方法 exec。<br>exec 方法接收一个字符串作为参数，对这个字符串进行正则匹配，如果没有匹配则返回null，否则返回一个结果数组。返回的数组第一项为整个模式的匹配值，后面依次为各个分组（子表达式）匹配的结果。如果没有开启全局匹配 g，它每次执行，总是返回第一个符合模式的匹配，否则它将每次返回下一个匹配，直到没有符合的匹配返回null，之后重新从第1个匹配开始返回。所以可以通过循环找到一个字符串中所有的匹配。<br>顺便说一句，这个结果数组，它上面还有两个属性，index：匹配的开始位置，input：原始文本，感兴趣的自行查看，我们先忽略这个。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'so wo know the number is 100, and total is 666.'</span>;</div><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w*)\s*is\s*(\d+)/</span>; </div><div class="line"><span class="keyword">var</span> result = reg.exec(str);  <span class="comment">//result: ["number is 100", "number", "100"]</span></div><div class="line">result = reg.exec(str);  <span class="comment">//再次执行，result依然为 ["number is 100", "number", "100"]</span></div><div class="line"></div><div class="line"><span class="comment">//开启全局匹配</span></div><div class="line">reg = <span class="regexp">/(\w*)\s*is\s*(\d+)/g</span>;</div><div class="line">result = reg.exec(str);  <span class="comment">//result: ["number is 100", "number", "100"]</span></div><div class="line">result = reg.exec(str);  <span class="comment">//接着执行，result: ["total is 666", "total", "666"]</span></div><div class="line">result = reg.exec(str);  <span class="comment">//接着执行，result: null</span></div><div class="line">result = reg.exec(str);  <span class="comment">//接着执行，重新开始匹配，result: ["number is 100", "number", "100"]</span></div></pre></td></tr></table></figure>
+<p>下面，我们通过循环输出所有的匹配<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'so wo know the number is 100, and total is 666.'</span>;</div><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w*)\s*is\s*(\d+)/g</span>; </div><div class="line"><span class="keyword">var</span> result, allResult = [];</div><div class="line"><span class="keyword">while</span> (result = reg.exec(str)) &#123;</div><div class="line">    allResult.push(result);			</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(allResult);  <span class="comment">// allResult: [["number is 100", "number", "100"], ["total is 666", "total", "666"]]</span></div></pre></td></tr></table></figure></p>
+<p>至于正则表达式对象的 test 方法，用于测试一个字符串是否匹配这个模式，如果匹配则返回true，否则为false，此时是否全局匹配无影响。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'so wo know the number is 100, and total is 666.'</span>;</div><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w*)\s*is\s*(\d+)/</span>; </div><div class="line"><span class="keyword">var</span> reg1 = <span class="regexp">/not-found/</span>;</div><div class="line"><span class="built_in">console</span>.log(reg.test(str));  <span class="comment">//true</span></div><div class="line"><span class="built_in">console</span>.log(reg1.test(str)); <span class="comment">//false</span></div></pre></td></tr></table></figure></p>
+<p>接下来看下字符串中支持正则表达式的相关方法，以下这些方法都可以接受一个普通的字符串作为参数，这里不谈。</p>
+<p>字符串的 match 方法可以接收一个正则表达式作为参数，在字符串内检索与正则相匹配的内容。当正则表达式没有g标志时，返回结果和 RegExp 的 exec 返回结果相同，即如果找到，则返回一个数组，数组第0项为该模式的匹配文本，后面的项依次是子表达式匹配的内容，该返回数组还有 input 和 index属性（先忽略这个）；当正则表达式有g标志时，返回结果则不同，此时，返回的也是一个数组，但是里面的每一项是该模式的所有匹配文本，不含子表达式信息。如果不匹配，返回null。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'so wo know the number is 100, and total is 666.'</span>;</div><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w*)\s*is\s*(\d+)/</span>; </div><div class="line"><span class="built_in">console</span>.log(str.match(reg));  <span class="comment">//["number is 100", "number", "100"]</span></div><div class="line"></div><div class="line">reg = <span class="regexp">/(\w*)\s*is\s*(\d+)/g</span>;  <span class="comment">//加入全局标志</span></div><div class="line"><span class="built_in">console</span>.log(str.match(reg));  <span class="comment">//["number is 100", "total is 666"]</span></div></pre></td></tr></table></figure></p>
+<p>字符串的 replace 方法也可以接收一个正则表达式作为第一个参数，第二个参数可以是字符串或者一个方法，当第二个参数是字符串的时候，可以使用一些特定符号：$n，n &lt; 99，表示第n个子表达式对应的匹配，$&amp;表示与正则表达式相匹配的文本，$`是位于匹配子串左侧的文本，$’是位于匹配子串右侧的文本，$$是插入$符号。<br>当第二个参数是方法的时候，其参数就是 match 时候结果数组依次传入，返回值作为本次匹配的替换结果。如果正则表达式有g标志，则会多次替换，直到全部替换完毕。replace方法会返回替换后的结果，但是对原字符串没有任何影响。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w+)\s(\w+)/</span>;</div><div class="line"><span class="keyword">var</span> str = <span class="string">'John Smith'</span>;</div><div class="line"><span class="keyword">var</span> newstr = str.replace(reg, <span class="string">'$2, $1'</span>);  <span class="comment">//使用字符串参数替换</span></div><div class="line"><span class="built_in">console</span>.log(newstr);  <span class="comment">// Smith, John</span></div><div class="line"></div><div class="line"><span class="comment">//下面写一个转换方法，用于将驼峰式明明转换成-连接</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">nameFormat</span>(<span class="params">oldName</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> oldName.replace(<span class="regexp">/[A-Z]/g</span>, <span class="function"><span class="keyword">function</span> (<span class="params">match</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'-'</span> + match.toLowerCase();</div><div class="line">    &#125;);	</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(nameFormat(<span class="string">'tooLongNameFor'</span>));   <span class="comment">//too-long-name-for</span></div></pre></td></tr></table></figure></p>
+<p>字符串的 search 方法可以接收一个正则表达式对象作为参数，如果可以匹配，那么返回匹配的起始位置，否则返回-1。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'so wo know the number is 100, and total is 666.'</span>;</div><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w*)\s*is\s*(\d+)/</span>; </div><div class="line"><span class="built_in">console</span>.log(str.search(reg));  <span class="comment">//15</span></div></pre></td></tr></table></figure></p>
+<p>字符串的 split 方法可以接收一个正则表达式对象作为参数，将字符串使用匹配的子串分隔。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'JavaScript,RegExp match，use'</span>;</div><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/,|\s+|，/</span>;  <span class="comment">//将使用英文逗号，中文逗号或者空格分隔的字符串分隔关键词</span></div><div class="line"><span class="built_in">console</span>.log(str.split(reg));  <span class="comment">//["JavaScript", "RegExp", "match", "use"]</span></div></pre></td></tr></table></figure></p>
+<p>除了以上内容，还有 RegExp 这个类的一点知识点，每次执行依次正则表达式匹配，那么就会有一些信息被保存在 RegExp 类的静态属性上。RegExp 的 $1 到 $9 保存9个子表达式的匹配文本，lastMatch（简写 $&amp;）是最后一个匹配的串，lastParen（简写 $+）是最后一个子表达式匹配的串，leftContext（简写 $`）是匹配串的左侧的所有文本，rightContext（简写 $’）是匹配串的右侧的所有文本，input 保存当前作用的字符串。</p>
+<p>好了，正则表达式中的正则大概讲完了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+     <!-- <a data-url="http://lvu.me/2016/08/07/JavaScript对正则表达式的支持/" data-id="cirpmkiar00050cs6t2zpx919" class="article-share-link">Share</a> -->
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
+
+      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+      
+        
+<nav id="article-nav">
+  
+  
+    <a href="/2016/08/07/正则表达式入门/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">正则表达式入门</div>
+    </a>
+  
+</nav>
+
+      
+      
+          
+  <section id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-JavaScript对正则表达式的支持" data-title="JavaScript对正则表达式的支持" data-url="http://lvu.me/2016/08/07/JavaScript对正则表达式的支持/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'gpia'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
+  </section>
+  
+
+      
+    </footer>
+  </div>
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/AngularJS/">AngularJS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/React/">React</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/原型/">原型</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/权限/">权限</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/正则表达式/">正则表达式</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/正则表达式/入门/">入门</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/正则表达式/应用/">应用</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/compile/">compile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prototype/">prototype</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-native/">react native</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型/">原型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/双向绑定/">双向绑定</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令/">命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/权限/">权限</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编译/">编译</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脏数据检测/">脏数据检测</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AngularJS/" style="font-size: 15px;">AngularJS</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/compile/" style="font-size: 10px;">compile</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/react-native/" style="font-size: 10px;">react native</a> <a href="/tags/原型/" style="font-size: 10px;">原型</a> <a href="/tags/双向绑定/" style="font-size: 10px;">双向绑定</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/权限/" style="font-size: 10px;">权限</a> <a href="/tags/正则表达式/" style="font-size: 15px;">正则表达式</a> <a href="/tags/编译/" style="font-size: 10px;">编译</a> <a href="/tags/脏数据检测/" style="font-size: 10px;">脏数据检测</a> <a href="/tags/随想/" style="font-size: 15px;">随想</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/08/07/JavaScript对正则表达式的支持/">JavaScript对正则表达式的支持</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/07/正则表达式入门/">正则表达式入门</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/03/对linux文件权限的理解/">对linux文件权限的理解</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/14/React-Native环境搭建/">React Native环境搭建</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/26/阳光正好/">阳光正好</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 <a href="https://github.com/gpia">gpia</a><br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      <span class="cnzz-analytics">
+<!-- CNZZ Analytics -->
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256812837'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1256812837' type='text/javascript'%3E%3C/script%3E"));</script>
+<!-- CNZZ Analytics -->
+</span>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="http://apps.bdimg.com/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
