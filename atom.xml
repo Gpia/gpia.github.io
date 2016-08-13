@@ -50,7 +50,7 @@
     <link href="http://lvu.me/2016/08/10/JavaScript%E4%B8%AD%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BA%94%E7%94%A8/"/>
     <id>http://lvu.me/2016/08/10/JavaScript中正则表达式的一些应用/</id>
     <published>2016-08-10T14:51:34.000Z</published>
-    <updated>2016-08-13T15:48:12.000Z</updated>
+    <updated>2016-08-13T16:24:21.000Z</updated>
     
     <content type="html"><![CDATA[<p>前面讲了正则表达式的基础知识<a href="/2016/08/07/正则表达式入门/">正则表达式入门</a>，以及<a href="/2016/08/07/JavaScript对正则表达式的支持/">JavaScript对正则表达的支持</a>之后，现在来看下正则表达式的应用实例。</p>
 <ol>
@@ -92,9 +92,9 @@
       <category term="应用" scheme="http://lvu.me/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E5%BA%94%E7%94%A8/"/>
     
     
-      <category term="正则表达式" scheme="http://lvu.me/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+      <category term="javascript" scheme="http://lvu.me/tags/javascript/"/>
     
-      <category term="JavaScript" scheme="http://lvu.me/tags/JavaScript/"/>
+      <category term="正则表达式" scheme="http://lvu.me/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
     
   </entry>
   
@@ -103,7 +103,7 @@
     <link href="http://lvu.me/2016/08/07/JavaScript%E5%AF%B9%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E6%94%AF%E6%8C%81/"/>
     <id>http://lvu.me/2016/08/07/JavaScript对正则表达式的支持/</id>
     <published>2016-08-07T10:57:36.000Z</published>
-    <updated>2016-08-11T01:09:25.000Z</updated>
+    <updated>2016-08-13T16:24:35.000Z</updated>
     
     <content type="html"><![CDATA[<p>正则表达式是一种强大的工具，具体语法请看我的另一篇博客<a href="/2016/08/07/正则表达式入门/">正则表达式入门</a>，现在我们来看看正则表达式在JavaScript中的应用。<br>JavaScript对正则表达式的支持主要是由正则表达式类RegExp和字符串类String来提供的。</p>
 <table>
@@ -200,9 +200,9 @@
       <category term="应用" scheme="http://lvu.me/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E5%BA%94%E7%94%A8/"/>
     
     
-      <category term="正则表达式" scheme="http://lvu.me/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+      <category term="javascript" scheme="http://lvu.me/tags/javascript/"/>
     
-      <category term="JavaScript" scheme="http://lvu.me/tags/JavaScript/"/>
+      <category term="正则表达式" scheme="http://lvu.me/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
     
   </entry>
   
@@ -315,7 +315,7 @@
     <link href="http://lvu.me/2016/07/14/React-Native%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     <id>http://lvu.me/2016/07/14/React-Native环境搭建/</id>
     <published>2016-07-14T15:28:33.000Z</published>
-    <updated>2016-07-31T04:48:35.000Z</updated>
+    <updated>2016-08-13T16:24:39.000Z</updated>
     
     <content type="html"><![CDATA[<p>最近尝试了下React Native，<a href="https://facebook.github.io/react-native/docs/getting-started.html#content" target="_blank" rel="external">官网的安装教程</a>，已经写的非常详细了，但是我在环境配置的过程中，还是发现了一些大坑。</p>
 <p><strong><em>重点是watchman的版本得是4.0以上！</em></strong></p>
@@ -378,7 +378,7 @@
     <link href="http://lvu.me/2016/05/28/AnglarJS-Tips/"/>
     <id>http://lvu.me/2016/05/28/AnglarJS-Tips/</id>
     <published>2016-05-28T09:16:19.000Z</published>
-    <updated>2016-07-31T04:48:35.000Z</updated>
+    <updated>2016-08-13T16:23:54.000Z</updated>
     
     <content type="html"><![CDATA[<p>用AngularJS的人越来越多了，这里有一些重要的问题，可以作为对AngularJS的考察点。<br>以下内容，针对1.x版本。</p>
 <p>1.AngularJS实现双向绑定的原理是什么？<br>2.$scope上$apply的作用是什么，什么时候需要你手动调用？<br>3.使用AngularJS的好处是什么？</p>
@@ -411,7 +411,7 @@
       <category term="AngularJS" scheme="http://lvu.me/categories/JavaScript/AngularJS/"/>
     
     
-      <category term="AngularJS" scheme="http://lvu.me/tags/AngularJS/"/>
+      <category term="angularjs" scheme="http://lvu.me/tags/angularjs/"/>
     
       <category term="javascript" scheme="http://lvu.me/tags/javascript/"/>
     
@@ -505,7 +505,7 @@
     <link href="http://lvu.me/2015/12/13/angular-compile/"/>
     <id>http://lvu.me/2015/12/13/angular-compile/</id>
     <published>2015-12-12T16:00:00.000Z</published>
-    <updated>2016-07-31T04:48:35.000Z</updated>
+    <updated>2016-08-13T16:24:12.000Z</updated>
     
     <content type="html"><![CDATA[<p>angular的DOM编译过程总的来说，是编译DOM，生成一个复合链接函数，然后传入scope作为参数，执行该链接函数，在scope和实际的DOM之间建立联系，编译过程结束。<br>下面主要来说一下编译DOM并生成链接函数的过程，以下分析基于<a href="https://github.com/Gpia/temp-data/blob/master/javascript/lib/angular-1.3.0.js" target="_blank" rel="external">angular-1.3.0源码</a>，由于代码很长，不在此贴出，可点击此链接查看，涉及到的内容主要从6094行开始。<br>编译DOM并生成链接函数的过程是由一个叫做compileNodes的内部方法完成的，该方法从一个指定的待编译节点列表开始编译，对于从document元素上启动的angular应用，那么待编译节点列表从一个只包含document元素（内部使用的是document的包装类型，即jqLite(document)）的数组开始，形如 [jqLite(document)]。</p>
 <a id="more"></a> 
@@ -533,7 +533,7 @@
       <category term="AngularJS" scheme="http://lvu.me/categories/JavaScript/AngularJS/"/>
     
     
-      <category term="AngularJS" scheme="http://lvu.me/tags/AngularJS/"/>
+      <category term="angularjs" scheme="http://lvu.me/tags/angularjs/"/>
     
       <category term="javascript" scheme="http://lvu.me/tags/javascript/"/>
     
