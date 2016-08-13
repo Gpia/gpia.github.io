@@ -94,13 +94,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>JavaScript中，经常有一种场景，比如我们要在窗口大小变化的时候，同步调整一下图形的大小，或者在文档滚动的时候判断是否加载数据，简单地说，我们可以直接绑定事件，如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//do something</span></div><div class="line">&#125;</div><div class="line">$(<span class="built_in">window</span>).resize(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    f();</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>但是，上述代码有可能有问题，由于在每次窗口变化的时候，可能会多次触发resize事件，导致f被执行多次，尤其是当处理的方法比较复杂，执行效率较低，或者我们想在每次窗口变化的时候，只执行一次f，这时候就需要进行“函数节流”了，我们让多次resize“合并”成一次resize，即使用一种方式，让每次窗口大小变化都只触发一次resize（实际上是很多次，可打印log验证），上代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//说明：这是一个节流方法，接收第一个参数，是要实际执行的函数，delay是一个延迟时间，即每多少时间作为一个节流周期</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn, delay</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> timer = <span class="literal">null</span>;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> context = <span class="keyword">this</span>, args = <span class="built_in">arguments</span>;</div><div class="line">        clearTimeout(timer);</div><div class="line">        timer = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            fn.apply(context, args);</div><div class="line">        &#125;, delay);</div><div class="line">    &#125;;</div><div class="line"> &#125;;</div></pre></td></tr></table></figure></p>
-<p>有了上面的节流函数，我们的resize事件可以优化成：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">window</span>).resize(throttle(f, <span class="number">50</span>));</div></pre></td></tr></table></figure></p>
-
+<p>但是，上述代码有可能有问题。<br>
+        
+          <p class="article-more-link">
+            <a href="/2016/08/13/JavaScript函数节流/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-     <!-- <a data-url="http://lvu.me/2016/08/13/JavaScript函数节流/" data-id="cirtdsirt000558s6c8nk5yy0" class="article-share-link">Share</a> -->
+     <!-- <a data-url="http://lvu.me/2016/08/13/JavaScript函数节流/" data-id="cirtdxkdt000560s60qgs51k2" class="article-share-link">Share</a> -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数节流/">函数节流</a></li></ul>
 
@@ -157,7 +160,7 @@
       
     </div>
     <footer class="article-footer">
-     <!-- <a data-url="http://lvu.me/2016/08/10/JavaScript中正则表达式的一些应用/" data-id="cirtdsirn000258s6n5a4sbdq" class="article-share-link">Share</a> -->
+     <!-- <a data-url="http://lvu.me/2016/08/10/JavaScript中正则表达式的一些应用/" data-id="cirtdxkdm000260s68hcgxs9l" class="article-share-link">Share</a> -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
 
@@ -243,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-     <!-- <a data-url="http://lvu.me/2016/08/07/JavaScript对正则表达式的支持/" data-id="cirtdsis0000858s6okb4jdv6" class="article-share-link">Share</a> -->
+     <!-- <a data-url="http://lvu.me/2016/08/07/JavaScript对正则表达式的支持/" data-id="cirtdxkdy000660s6orsypjv2" class="article-share-link">Share</a> -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
 
@@ -300,7 +303,7 @@
       
     </div>
     <footer class="article-footer">
-     <!-- <a data-url="http://lvu.me/2016/08/07/正则表达式入门/" data-id="cirtdsisf000f58s6z85vubo9" class="article-share-link">Share</a> -->
+     <!-- <a data-url="http://lvu.me/2016/08/07/正则表达式入门/" data-id="cirtdxkei000e60s6hdnjcx7z" class="article-share-link">Share</a> -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
 
@@ -362,7 +365,7 @@
       
     </div>
     <footer class="article-footer">
-     <!-- <a data-url="http://lvu.me/2016/08/03/对linux文件权限的理解/" data-id="cirtdsisd000e58s6iuvsmn2u" class="article-share-link">Share</a> -->
+     <!-- <a data-url="http://lvu.me/2016/08/03/对linux文件权限的理解/" data-id="cirtdxkek000f60s66s2cgzau" class="article-share-link">Share</a> -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/命令/">命令</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/权限/">权限</a></li></ul>
 
