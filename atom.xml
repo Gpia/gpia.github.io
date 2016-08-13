@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lvu.me/"/>
-  <updated>2016-08-13T15:43:19.000Z</updated>
+  <updated>2016-08-13T16:06:59.000Z</updated>
   <id>http://lvu.me/</id>
   
   <author>
@@ -16,11 +16,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>JavaScript函数节流</title>
+    <link href="http://lvu.me/2016/08/13/JavaScript%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81/"/>
+    <id>http://lvu.me/2016/08/13/JavaScript函数节流/</id>
+    <published>2016-08-13T15:50:48.000Z</published>
+    <updated>2016-08-13T16:06:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>JavaScript中，经常有一种场景，比如我们要在窗口大小变化的时候，同步调整一下图形的大小，或者在文档滚动的时候判断是否加载数据，简单地说，我们可以直接绑定事件，如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//do something</span></div><div class="line">&#125;</div><div class="line">$(<span class="built_in">window</span>).resize(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    f();</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>但是，上述代码有可能有问题，由于在每次窗口变化的时候，可能会多次触发resize事件，导致f被执行多次，尤其是当处理的方法比较复杂，执行效率较低，或者我们想在每次窗口变化的时候，只执行一次f，这时候就需要进行“函数节流”了，我们让多次resize“合并”成一次resize，即使用一种方式，让每次窗口大小变化都只触发一次resize（实际上是很多次，可打印log验证），上代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//说明：这是一个节流方法，接收第一个参数，是要实际执行的函数，delay是一个延迟时间，即每多少时间作为一个节流周期</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn, delay</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> timer = <span class="literal">null</span>;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> context = <span class="keyword">this</span>, args = <span class="built_in">arguments</span>;</div><div class="line">        clearTimeout(timer);</div><div class="line">        timer = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            fn.apply(context, args);</div><div class="line">        &#125;, delay);</div><div class="line">    &#125;;</div><div class="line"> &#125;;</div></pre></td></tr></table></figure></p>
+<p>有了上面的节流函数，我们的resize事件可以优化成：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">window</span>).resize(throttle(f, <span class="number">50</span>));</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;JavaScript中，经常有一种场景，比如我们要在窗口大小变化的时候，同步调整一下图形的大小，或者在文档滚动的时候判断是否加载数据，简单地说，我们可以直接绑定事件，如下：&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td cla
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://lvu.me/categories/JavaScript/"/>
+    
+      <category term="杂项" scheme="http://lvu.me/categories/JavaScript/%E6%9D%82%E9%A1%B9/"/>
+    
+    
+      <category term="javascript" scheme="http://lvu.me/tags/javascript/"/>
+    
+      <category term="函数节流" scheme="http://lvu.me/tags/%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaScript中正则表达式的一些应用</title>
     <link href="http://lvu.me/2016/08/10/JavaScript%E4%B8%AD%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BA%94%E7%94%A8/"/>
     <id>http://lvu.me/2016/08/10/JavaScript中正则表达式的一些应用/</id>
     <published>2016-08-10T14:51:34.000Z</published>
-    <updated>2016-08-13T15:43:19.000Z</updated>
+    <updated>2016-08-13T15:48:12.000Z</updated>
     
     <content type="html"><![CDATA[<p>前面讲了正则表达式的基础知识<a href="/2016/08/07/正则表达式入门/">正则表达式入门</a>，以及<a href="/2016/08/07/JavaScript对正则表达式的支持/">JavaScript对正则表达的支持</a>之后，现在来看下正则表达式的应用实例。</p>
 <ol>
@@ -28,6 +57,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//说明：对于数字中的任何一位，如果其后面有3，6，9，... 位数字，那么该位后面就应该有一个,</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">numberFormat</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">String</span>(num).replace(<span class="regexp">/\d(?=(\d&#123;3&#125;)+$)/g</span>, <span class="string">'$&amp;,'</span>);</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(numberFormat(<span class="number">1234567</span>));  <span class="comment">// 1,234,567</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>获取url参数</p>
+<a id="more"></a> 
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//说明：url查询字符串以 ? 开头，参数以 &amp; 分隔，参数组如 key=value</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUrlParam</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> str = location.search,</div><div class="line">        reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'[?&amp;]'</span> + name + <span class="string">'='</span> + <span class="string">'([^&amp;]*)'</span>),</div><div class="line">        result;</div><div class="line">    result = reg.exec(str);</div><div class="line">    <span class="keyword">return</span> result ? <span class="built_in">decodeURIComponent</span>(result[<span class="number">1</span>]) : <span class="literal">undefined</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>获取cookie值</p>
@@ -47,7 +77,12 @@
     
     <summary type="html">
     
-      &lt;p&gt;前面讲了正则表达式的基础知识&lt;a href=&quot;/2016/08/07/正则表达式入门/&quot;&gt;正则表达式入门&lt;/a&gt;，以及&lt;a href=&quot;/2016/08/07/JavaScript对正则表达式的支持/&quot;&gt;JavaScript对正则表达的支持&lt;/a&gt;之后，现在来看下正则表达式
+      &lt;p&gt;前面讲了正则表达式的基础知识&lt;a href=&quot;/2016/08/07/正则表达式入门/&quot;&gt;正则表达式入门&lt;/a&gt;，以及&lt;a href=&quot;/2016/08/07/JavaScript对正则表达式的支持/&quot;&gt;JavaScript对正则表达的支持&lt;/a&gt;之后，现在来看下正则表达式的应用实例。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;对数字进行千分位分隔&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//说明：对于数字中的任何一位，如果其后面有3，6，9，... 位数字，那么该位后面就应该有一个,&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;numberFormat&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;num&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt;(num).replace(&lt;span class=&quot;regexp&quot;&gt;/\d(?=(\d&amp;#123;3&amp;#125;)+$)/g&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;$&amp;amp;,&#39;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(numberFormat(&lt;span class=&quot;number&quot;&gt;1234567&lt;/span&gt;));  &lt;span class=&quot;comment&quot;&gt;// 1,234,567&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;获取url参数&lt;/p&gt;
     
     </summary>
     
