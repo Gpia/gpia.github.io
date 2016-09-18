@@ -67,6 +67,59 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JavaScript同源策略和跨域" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/16/JavaScript同源策略和跨域/" class="article-date">
+  <time datetime="2016-08-16T15:52:01.000Z" itemprop="datePublished">2016-08-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>►<a class="article-category-link" href="/categories/JavaScript/同源策略/">同源策略</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/16/JavaScript同源策略和跨域/">JavaScript同源策略和跨域</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>同源策略是对JavaScript代码能够操作哪些Web内容的一条完整的安全限制。当Web页面使用多个iframe元素或者打开其他浏览器窗口的时候，这一策略通常就会发生作用。具体来说，脚本只能读取和所属文档来源相同的窗口和文档的属性。</p>
+<p>文档的来源包括：协议，主机，端口。三者有任何一个不同，即为不同来源。需要说明的一点是，文档中的脚本本身的来源和同源策略并不相关，这一点非常重要。例如，一个来自主机A的脚本被包含到（使用script标签的src属性）宿主B的一个页面中，那么，这个脚本的来源是主机B，简单的说，就是脚本本身来自哪里不重要，重要的是脚本被包含在哪个文档里。</p>
+<p>实际上，同源策略并非应用于不同源的窗口的所有对象的所有属性，不过他应用到了其中的大部分属性，尤其是Document对象的几乎所有属性。此外，同源策略还会阻止XMLHttpRequest对不同文档来源的请求。</p>
+<p>不同来源文档之间的相互访问称为跨域（访问），同源策略能够阻止跨域访问带来的安全问题。</p>
+<p>对于使用多个子域的大站点来说，同源策略就显得有点过于严格了，比如home.example.com的文档里的脚本要合法地访问developer.example.com载入的文档的属性。这种情况下，可以通过文档中的脚本设置document的domain属性，使得两个子域的文档的domain是同一个值，这样，这两个窗口就可以不受同源策略的限制了。<br>当然，domain的值不能是任意值，它只能是当前文档来源域的前缀或者他本身，另外domain中必须有一个点号，不能设置为“com”这样的顶级域名，比如home.example.com可以设置domain为example.com。对于home.example.com和developer.example.com，只要将它们的文档domain设置为example.com就可以进行跨域操作了。</p>
+<p>对于XMLHttpRequest的跨域请求，可以通过跨域资源共享（Cross-Origin Resource Sharing，即CORS）来实现。具体是在跨域http请求头部增加Origin属性，对应的响应头部增加Access-Control-Allow-Origin。<br>当然，对于跨域请求，可以借助JSONP技术，具体即借助script标签的src属性可以加载不同来源的脚本来实现。<br>另外，通过跨文档信息（cross-document messaging）技术，可以在不同文档的脚本之间传递消息，而不用管脚本的来源是否不同。调动window对象上的postMessage()方法，可以一步传递消息时间（可以用onmessage时间处理程序来处理它）到窗口的文档里。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+     <!-- <a data-url="http://lvu.me/2016/08/16/JavaScript同源策略和跨域/" data-id="cit090czy0008z9s6ap8ed47a" class="article-share-link">Share</a> -->
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/同源策略/">同源策略</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跨域/">跨域</a></li></ul>
+
+      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+      
+      
+          
+
+      
+    </footer>
+  </div>
+</article>
+
+  
     <article id="post-JavaScript函数节流" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/08/13/JavaScript函数节流/" class="article-date">
@@ -103,7 +156,7 @@
       
     </div>
     <footer class="article-footer">
-     <!-- <a data-url="http://lvu.me/2016/08/13/JavaScript函数节流/" data-id="cit08xcax0005yks6feza47e4" class="article-share-link">Share</a> -->
+     <!-- <a data-url="http://lvu.me/2016/08/13/JavaScript函数节流/" data-id="cit090czq0005z9s651r7k0mx" class="article-share-link">Share</a> -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数节流/">函数节流</a></li></ul>
 
@@ -160,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-     <!-- <a data-url="http://lvu.me/2016/08/10/JavaScript中正则表达式的一些应用/" data-id="cit08xcaq0002yks6o2l3250s" class="article-share-link">Share</a> -->
+     <!-- <a data-url="http://lvu.me/2016/08/10/JavaScript中正则表达式的一些应用/" data-id="cit090czk0002z9s6svspp7rm" class="article-share-link">Share</a> -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
 
@@ -246,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-     <!-- <a data-url="http://lvu.me/2016/08/07/JavaScript对正则表达式的支持/" data-id="cit08xcb60008yks6ga5mh53t" class="article-share-link">Share</a> -->
+     <!-- <a data-url="http://lvu.me/2016/08/07/JavaScript对正则表达式的支持/" data-id="cit090d03000bz9s6odabuooz" class="article-share-link">Share</a> -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
 
@@ -303,71 +356,9 @@
       
     </div>
     <footer class="article-footer">
-     <!-- <a data-url="http://lvu.me/2016/08/07/正则表达式入门/" data-id="cit08xcbk000fyks69vfowqu6" class="article-share-link">Share</a> -->
+     <!-- <a data-url="http://lvu.me/2016/08/07/正则表达式入门/" data-id="cit090d0a000fz9s6h4ojdwo4" class="article-share-link">Share</a> -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
-
-      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a></div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-
-      
-      
-          
-
-      
-    </footer>
-  </div>
-</article>
-
-  
-    <article id="post-对linux文件权限的理解" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/08/03/对linux文件权限的理解/" class="article-date">
-  <time datetime="2016-08-03T00:06:02.000Z" itemprop="datePublished">2016-08-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>►<a class="article-category-link" href="/categories/linux/权限/">权限</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/03/对linux文件权限的理解/">对linux文件权限的理解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>*nix系统中，文件的各种权限比较重要，以下内容，是通过学习《鸟哥的linxu私房菜》之后总结的内容，方便自己理解和记忆。这篇文章最早发布于<a href="http://www.cnblogs.com/ilvu/p/4002992.html">我的博客园</a>。</p>
-<p>文件和目录都有权限：r、w 、x，并且对于 拥有者（属主），同组用户，其他用户 都有对应的权限限制。</p>
-<ul>
-<li>对于文件：r代表读，可读取文件的内容；w代表写，可修改文件的内容；x代表执行，可以执行文件</li>
-<li>对于目录（记录文件清单）：r代表可以列出其中文件的相关信息；w代表目录下文件和目录的删除、重命名、新建；x代表可以以该目录作为工作目录</li>
-</ul>
-<p>总结：</p>
-<ul>
-<li>文件的访问及使用限制由文件本身的权限决定，但是文件名称的修改、文件本身的删除是由文件所在目录的w权限决定的</li>
-<li>文件的拥有着或者root可以修改文件或者目录的权限</li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/2016/08/03/对linux文件权限的理解/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-     <!-- <a data-url="http://lvu.me/2016/08/03/对linux文件权限的理解/" data-id="cit08xcbe000byks6dk8iiuza" class="article-share-link">Share</a> -->
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/命令/">命令</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/权限/">权限</a></li></ul>
 
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a></div>
 <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
@@ -395,7 +386,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/AngularJS/">AngularJS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/React/">React</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/原型/">原型</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/技巧/">技巧</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/权限/">权限</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/正则表达式/">正则表达式</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/正则表达式/入门/">入门</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/正则表达式/应用/">应用</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/AngularJS/">AngularJS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/React/">React</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/原型/">原型</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/同源策略/">同源策略</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/技巧/">技巧</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/权限/">权限</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/正则表达式/">正则表达式</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/正则表达式/入门/">入门</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/正则表达式/应用/">应用</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -404,7 +395,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/angularjs/">angularjs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/compile/">compile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prototype/">prototype</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-native/">react native</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数节流/">函数节流</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型/">原型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/双向绑定/">双向绑定</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令/">命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/权限/">权限</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编译/">编译</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脏数据检测/">脏数据检测</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/angularjs/">angularjs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/compile/">compile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prototype/">prototype</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-native/">react native</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数节流/">函数节流</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型/">原型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/双向绑定/">双向绑定</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/同源策略/">同源策略</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令/">命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/权限/">权限</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编译/">编译</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脏数据检测/">脏数据检测</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随想/">随想</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -413,7 +404,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/angularjs/" style="font-size: 13.33px;">angularjs</a> <a href="/tags/compile/" style="font-size: 10px;">compile</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/react-native/" style="font-size: 10px;">react native</a> <a href="/tags/函数节流/" style="font-size: 10px;">函数节流</a> <a href="/tags/原型/" style="font-size: 10px;">原型</a> <a href="/tags/双向绑定/" style="font-size: 10px;">双向绑定</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/权限/" style="font-size: 10px;">权限</a> <a href="/tags/正则表达式/" style="font-size: 16.67px;">正则表达式</a> <a href="/tags/编译/" style="font-size: 10px;">编译</a> <a href="/tags/脏数据检测/" style="font-size: 10px;">脏数据检测</a> <a href="/tags/随想/" style="font-size: 13.33px;">随想</a> <a href="/tags/随笔/" style="font-size: 13.33px;">随笔</a>
+      <a href="/tags/angularjs/" style="font-size: 13.33px;">angularjs</a> <a href="/tags/compile/" style="font-size: 10px;">compile</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/react-native/" style="font-size: 10px;">react native</a> <a href="/tags/函数节流/" style="font-size: 10px;">函数节流</a> <a href="/tags/原型/" style="font-size: 10px;">原型</a> <a href="/tags/双向绑定/" style="font-size: 10px;">双向绑定</a> <a href="/tags/同源策略/" style="font-size: 10px;">同源策略</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/权限/" style="font-size: 10px;">权限</a> <a href="/tags/正则表达式/" style="font-size: 16.67px;">正则表达式</a> <a href="/tags/编译/" style="font-size: 10px;">编译</a> <a href="/tags/脏数据检测/" style="font-size: 10px;">脏数据检测</a> <a href="/tags/跨域/" style="font-size: 10px;">跨域</a> <a href="/tags/随想/" style="font-size: 13.33px;">随想</a> <a href="/tags/随笔/" style="font-size: 13.33px;">随笔</a>
     </div>
   </div>
 
@@ -422,7 +413,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -432,6 +423,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/08/16/JavaScript同源策略和跨域/">JavaScript同源策略和跨域</a>
+          </li>
         
           <li>
             <a href="/2016/08/13/JavaScript函数节流/">JavaScript函数节流</a>
@@ -447,10 +442,6 @@
         
           <li>
             <a href="/2016/08/07/正则表达式入门/">正则表达式入门</a>
-          </li>
-        
-          <li>
-            <a href="/2016/08/03/对linux文件权限的理解/">对linux文件权限的理解</a>
           </li>
         
       </ul>

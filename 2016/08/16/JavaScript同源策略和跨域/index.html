@@ -3,18 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>阳光正好 | 0 to 1</title>
+  <title>JavaScript同源策略和跨域 | 0 to 1</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="你所知道的一切，最终都会成为你的束缚。你的知识，决定了你会做出何种行为，当你的知识不够全面，不够客观，那么你容易做出自己觉得对的，但实际上不怎么正确的决定。我们读书，或者旅行，或者和别人交流，或者反思，都可以让我们更好地认识世界，认识人生，认识自己，让自己具备全面的、客观的知识，从而做出正确的决定。希望最后的我们，有信仰，有敬畏，有坚持，有原则，相信美好，选择善良，认真地生活。">
+  <meta name="description" content="同源策略是对JavaScript代码能够操作哪些Web内容的一条完整的安全限制。当Web页面使用多个iframe元素或者打开其他浏览器窗口的时候，这一策略通常就会发生作用。具体来说，脚本只能读取和所属文档来源相同的窗口和文档的属性。
+文档的来源包括：协议，主机，端口。三者有任何一个不同，即为不同来源。需要说明的一点是，文档中的脚本本身的来源和同源策略并不相关，这一点非常重要。例如，一个来自主机A的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阳光正好">
-<meta property="og:url" content="http://lvu.me/2016/06/26/阳光正好/index.html">
+<meta property="og:title" content="JavaScript同源策略和跨域">
+<meta property="og:url" content="http://lvu.me/2016/08/16/JavaScript同源策略和跨域/index.html">
 <meta property="og:site_name" content="0 to 1">
-<meta property="og:description" content="你所知道的一切，最终都会成为你的束缚。你的知识，决定了你会做出何种行为，当你的知识不够全面，不够客观，那么你容易做出自己觉得对的，但实际上不怎么正确的决定。我们读书，或者旅行，或者和别人交流，或者反思，都可以让我们更好地认识世界，认识人生，认识自己，让自己具备全面的、客观的知识，从而做出正确的决定。希望最后的我们，有信仰，有敬畏，有坚持，有原则，相信美好，选择善良，认真地生活。">
-<meta property="og:updated_time" content="2016-07-31T04:48:35.000Z">
+<meta property="og:description" content="同源策略是对JavaScript代码能够操作哪些Web内容的一条完整的安全限制。当Web页面使用多个iframe元素或者打开其他浏览器窗口的时候，这一策略通常就会发生作用。具体来说，脚本只能读取和所属文档来源相同的窗口和文档的属性。
+文档的来源包括：协议，主机，端口。三者有任何一个不同，即为不同来源。需要说明的一点是，文档中的脚本本身的来源和同源策略并不相关，这一点非常重要。例如，一个来自主机A的">
+<meta property="og:updated_time" content="2016-09-18T14:40:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阳光正好">
-<meta name="twitter:description" content="你所知道的一切，最终都会成为你的束缚。你的知识，决定了你会做出何种行为，当你的知识不够全面，不够客观，那么你容易做出自己觉得对的，但实际上不怎么正确的决定。我们读书，或者旅行，或者和别人交流，或者反思，都可以让我们更好地认识世界，认识人生，认识自己，让自己具备全面的、客观的知识，从而做出正确的决定。希望最后的我们，有信仰，有敬畏，有坚持，有原则，相信美好，选择善良，认真地生活。">
+<meta name="twitter:title" content="JavaScript同源策略和跨域">
+<meta name="twitter:description" content="同源策略是对JavaScript代码能够操作哪些Web内容的一条完整的安全限制。当Web页面使用多个iframe元素或者打开其他浏览器窗口的时候，这一策略通常就会发生作用。具体来说，脚本只能读取和所属文档来源相同的窗口和文档的属性。
+文档的来源包括：协议，主机，端口。三者有任何一个不同，即为不同来源。需要说明的一点是，文档中的脚本本身的来源和同源策略并不相关，这一点非常重要。例如，一个来自主机A的">
   
     <link rel="alternative" href="/atom.xml" title="0 to 1" type="application/atom+xml">
   
@@ -66,14 +69,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-阳光正好" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-JavaScript同源策略和跨域" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/06/26/阳光正好/" class="article-date">
-  <time datetime="2016-06-26T06:34:13.000Z" itemprop="datePublished">2016-06-26</time>
+    <a href="/2016/08/16/JavaScript同源策略和跨域/" class="article-date">
+  <time datetime="2016-08-16T15:52:01.000Z" itemprop="datePublished">2016-08-16</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/随笔/">随笔</a>
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>►<a class="article-category-link" href="/categories/JavaScript/同源策略/">同源策略</a>
   </div>
 
   </div>
@@ -84,7 +87,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      阳光正好
+      JavaScript同源策略和跨域
     </h1>
   
 
@@ -92,14 +95,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>你所知道的一切，最终都会成为你的束缚。你的知识，决定了你会做出何种行为，当你的知识不够全面，不够客观，那么你容易做出自己觉得对的，但实际上不怎么正确的决定。<br>我们读书，或者旅行，或者和别人交流，或者反思，都可以让我们更好地认识世界，认识人生，认识自己，让自己具备全面的、客观的知识，从而做出正确的决定。<br>希望最后的我们，有信仰，有敬畏，有坚持，有原则，相信美好，选择善良，认真地生活。</p>
+        <p>同源策略是对JavaScript代码能够操作哪些Web内容的一条完整的安全限制。当Web页面使用多个iframe元素或者打开其他浏览器窗口的时候，这一策略通常就会发生作用。具体来说，脚本只能读取和所属文档来源相同的窗口和文档的属性。</p>
+<p>文档的来源包括：协议，主机，端口。三者有任何一个不同，即为不同来源。需要说明的一点是，文档中的脚本本身的来源和同源策略并不相关，这一点非常重要。例如，一个来自主机A的脚本被包含到（使用script标签的src属性）宿主B的一个页面中，那么，这个脚本的来源是主机B，简单的说，就是脚本本身来自哪里不重要，重要的是脚本被包含在哪个文档里。</p>
+<p>实际上，同源策略并非应用于不同源的窗口的所有对象的所有属性，不过他应用到了其中的大部分属性，尤其是Document对象的几乎所有属性。此外，同源策略还会阻止XMLHttpRequest对不同文档来源的请求。</p>
+<p>不同来源文档之间的相互访问称为跨域（访问），同源策略能够阻止跨域访问带来的安全问题。</p>
+<p>对于使用多个子域的大站点来说，同源策略就显得有点过于严格了，比如home.example.com的文档里的脚本要合法地访问developer.example.com载入的文档的属性。这种情况下，可以通过文档中的脚本设置document的domain属性，使得两个子域的文档的domain是同一个值，这样，这两个窗口就可以不受同源策略的限制了。<br>当然，domain的值不能是任意值，它只能是当前文档来源域的前缀或者他本身，另外domain中必须有一个点号，不能设置为“com”这样的顶级域名，比如home.example.com可以设置domain为example.com。对于home.example.com和developer.example.com，只要将它们的文档domain设置为example.com就可以进行跨域操作了。</p>
+<p>对于XMLHttpRequest的跨域请求，可以通过跨域资源共享（Cross-Origin Resource Sharing，即CORS）来实现。具体是在跨域http请求头部增加Origin属性，对应的响应头部增加Access-Control-Allow-Origin。<br>当然，对于跨域请求，可以借助JSONP技术，具体即借助script标签的src属性可以加载不同来源的脚本来实现。<br>另外，通过跨文档信息（cross-document messaging）技术，可以在不同文档的脚本之间传递消息，而不用管脚本的来源是否不同。调动window对象上的postMessage()方法，可以一步传递消息时间（可以用onmessage时间处理程序来处理它）到窗口的文档里。</p>
 
       
     </div>
     <footer class="article-footer">
-     <!-- <a data-url="http://lvu.me/2016/06/26/阳光正好/" data-id="cit090d0f000jz9s6j8e5igf3" class="article-share-link">Share</a> -->
+     <!-- <a data-url="http://lvu.me/2016/08/16/JavaScript同源策略和跨域/" data-id="cit090czy0008z9s6ap8ed47a" class="article-share-link">Share</a> -->
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随想/">随想</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/同源策略/">同源策略</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跨域/">跨域</a></li></ul>
 
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a></div>
 <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
@@ -108,19 +116,10 @@
         
 <nav id="article-nav">
   
-    <a href="/2016/07/14/React-Native环境搭建/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          React Native环境搭建
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/05/28/AnglarJS-Tips/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/08/13/JavaScript函数节流/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">AnglarJS Tips（持续更新）</div>
+      <div class="article-nav-title">JavaScript函数节流</div>
     </a>
   
 </nav>
@@ -130,7 +129,7 @@
           
   <section id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="post-阳光正好" data-title="阳光正好" data-url="http://lvu.me/2016/06/26/阳光正好/"></div>
+    <div class="ds-thread" data-thread-key="post-JavaScript同源策略和跨域" data-title="JavaScript同源策略和跨域" data-url="http://lvu.me/2016/08/16/JavaScript同源策略和跨域/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
